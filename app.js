@@ -505,23 +505,51 @@ async function copyCurrentPrompt() {
 
 document.querySelector("#copy-prompt").addEventListener("click", copyCurrentPrompt);
 
-function setTheme(theme, persist = true) {
-  html.dataset.theme = theme;
-  const toggle = document.querySelector("#theme-toggle");
-  toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
-  if (persist) localStorage.setItem("workflow-theme", theme);
+const themeToggle = document.querySelector("#theme-toggle");
+const themeLabel = document.querySelector("#theme-label");
+const themeStatus = document.querySelector("#theme-status");
+const themeColor = document.querySelector('meta[name="theme-color"]');
+const themeQuery = window.matchMedia("(prefers-color-scheme: light)");
+const themeModes = ["system", "light", "dark"];
+
+function resolveTheme(mode) {
+  return mode === "system" ? (themeQuery.matches ? "light" : "dark") : mode;
 }
 
-document.querySelector("#theme-toggle").addEventListener("click", () => {
-  setTheme(html.dataset.theme === "dark" ? "light" : "dark");
+function applyThemeMode(mode, { persist = true, announce = false } = {}) {
+  const safeMode = themeModes.includes(mode) ? mode : "system";
+  const resolved = resolveTheme(safeMode);
+  const nextMode = themeModes[(themeModes.indexOf(safeMode) + 1) % themeModes.length];
+  const label = safeMode[0].toUpperCase() + safeMode.slice(1);
+  const nextLabel = nextMode[0].toUpperCase() + nextMode.slice(1);
+
+  html.dataset.themeMode = safeMode;
+  html.dataset.theme = resolved;
+  themeLabel.textContent = label;
+  themeStatus.textContent = safeMode === "system" ? `Theme follows your system setting and is currently ${resolved}.` : `${label} theme selected.`;
+  themeToggle.setAttribute("aria-label", `Theme: ${label}. Activate to switch to ${nextLabel} theme.`);
+  themeToggle.title = `Theme: ${label}`;
+  themeColor.content = resolved === "light" ? "#ffffff" : "#07111f";
+
+  if (persist) {
+    localStorage.setItem("workflow-theme-mode", safeMode);
+    localStorage.removeItem("workflow-theme");
+  }
+  if (announce) showToast(`${label} theme selected.`);
+}
+
+themeToggle.addEventListener("click", () => {
+  const current = themeModes.includes(html.dataset.themeMode) ? html.dataset.themeMode : "system";
+  const next = themeModes[(themeModes.indexOf(current) + 1) % themeModes.length];
+  applyThemeMode(next, { announce: true });
 });
 
-const savedTheme = localStorage.getItem("workflow-theme");
-if (savedTheme === "light" || savedTheme === "dark") {
-  setTheme(savedTheme, false);
-} else if (window.matchMedia?.("(prefers-color-scheme: light)").matches) {
-  setTheme("light", false);
-}
+themeQuery.addEventListener?.("change", () => {
+  if (html.dataset.themeMode === "system") applyThemeMode("system", { persist: false });
+});
+
+const savedThemeMode = localStorage.getItem("workflow-theme-mode") || localStorage.getItem("workflow-theme") || "system";
+applyThemeMode(savedThemeMode, { persist: false });
 
 const checkboxes = [...document.querySelectorAll(".check-grid input")];
 const savedChecks = JSON.parse(localStorage.getItem("workflow-checks") || "[]");
@@ -540,15 +568,30 @@ document.querySelector("#reset-checks").addEventListener("click", () => {
 
 const menuButton = document.querySelector("#menu-button");
 const mainNav = document.querySelector("#main-nav");
-menuButton.addEventListener("click", () => {
-  const isOpen = mainNav.classList.toggle("is-open");
+const menuLabel = document.querySelector("#menu-label");
+
+function setMenuState(isOpen) {
+  mainNav.classList.toggle("is-open", isOpen);
   menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuLabel.textContent = isOpen ? "Close navigation" : "Open navigation";
+}
+
+menuButton.addEventListener("click", () => {
+  setMenuState(!mainNav.classList.contains("is-open"));
 });
 mainNav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mainNav.classList.remove("is-open");
-    menuButton.setAttribute("aria-expanded", "false");
-  });
+  link.addEventListener("click", () => setMenuState(false));
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && mainNav.classList.contains("is-open")) {
+    setMenuState(false);
+    menuButton.focus();
+  }
+});
+
+window.matchMedia("(min-width: 1181px)").addEventListener?.("change", (event) => {
+  if (event.matches) setMenuState(false);
 });
 
 const revealObserver = new IntersectionObserver(

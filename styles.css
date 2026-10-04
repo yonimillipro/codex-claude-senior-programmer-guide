@@ -153,6 +153,10 @@ svg {
 }
 
 .brand {
+  grid-column: 1;
+}
+
+.brand {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -169,6 +173,7 @@ svg {
 }
 
 .main-nav {
+  grid-column: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,6 +210,7 @@ svg {
 }
 
 .header-actions {
+  grid-column: 3;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -234,12 +240,42 @@ svg {
   height: 22px;
 }
 
-.moon-icon,
-html[data-theme="light"] .sun-icon {
-  display: none;
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 106px;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-strong) 82%, transparent);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--bg) 70%, transparent);
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease, transform 160ms ease;
 }
 
-html[data-theme="light"] .moon-icon {
+.theme-toggle:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-strong);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.theme-toggle svg {
+  display: none;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+}
+
+html[data-theme-mode="system"] .system-icon,
+html[data-theme-mode="light"] .sun-icon,
+html[data-theme-mode="dark"] .moon-icon {
   display: block;
 }
 
@@ -1565,11 +1601,14 @@ html[data-theme="light"] .moon-icon {
 
 @media (max-width: 1180px) {
   .site-header {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 8px;
   }
 
   .menu-button {
     display: inline-grid;
+    grid-column: 3;
+    grid-row: 1;
     justify-self: end;
   }
 
@@ -1590,6 +1629,12 @@ html[data-theme="light"] .moon-icon {
   }
 
   .header-actions {
+    display: flex;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .header-actions .button-small {
     display: none;
   }
 
@@ -1779,6 +1824,7 @@ html[data-theme="light"] .moon-icon {
 
   .site-header {
     padding-inline: 14px;
+    gap: 5px;
   }
 
   .brand {
@@ -1788,6 +1834,47 @@ html[data-theme="light"] .moon-icon {
   .brand svg {
     width: 24px;
     height: 24px;
+  }
+
+  .theme-toggle {
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    padding: 0;
+  }
+
+  .theme-label {
+    display: none;
+  }
+
+  .menu-button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .main-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 10px 14px 14px;
+    box-shadow: 0 18px 34px color-mix(in srgb, var(--bg) 55%, transparent);
+  }
+
+  .main-nav.is-open {
+    display: grid;
+  }
+
+  .main-nav a {
+    display: grid;
+    min-height: 44px;
+    place-items: center;
+  }
+
+  .main-nav a:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .main-nav a::after {
+    bottom: 4px;
   }
 
   .hero {
@@ -1870,6 +1957,17 @@ html[data-theme="light"] .moon-icon {
   .model-panel-header code {
     max-width: 100%;
     overflow-x: auto;
+  }
+
+  .comparison-table {
+    min-width: 690px;
+  }
+
+  .comparison-table-wrap {
+    margin-inline: -16px;
+    padding-inline: 16px;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
   }
 
   .verification-rail ol {
