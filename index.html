@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="An interactive 2026 senior developer guide to current OpenAI and Claude models, Claude Code, Codex, prompting, verification, and release workflow."
+    />
+    <title>Senior Developer Workflow Guide</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body id="top">
+    <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+
+    <svg class="svg-library" aria-hidden="true">
+      <symbol id="icon-code" viewBox="0 0 24 24">
+        <path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14" />
+      </symbol>
+      <symbol id="icon-brain" viewBox="0 0 24 24">
+        <path d="M9.5 5.5A3.5 3.5 0 0 0 6 9v1a3 3 0 0 0-1 5.2V17a3 3 0 0 0 3 3h1.5V5.5ZM14.5 5.5A3.5 3.5 0 0 1 18 9v1a3 3 0 0 1 1 5.2V17a3 3 0 0 1-3 3h-1.5V5.5ZM9.5 9H8M14.5 9H16M9.5 14H7.5M14.5 14h2" />
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7.5" r="3.5" />
+        <path d="M5 21a7 7 0 0 1 14 0H5Z" />
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6l8-3Z" />
+        <path d="m8.5 12 2.2 2.2 4.8-4.8" />
+      </symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.5" cy="10.5" r="6" />
+        <path d="m15 15 5 5" />
+      </symbol>
+      <symbol id="icon-branch" viewBox="0 0 24 24">
+        <circle cx="6" cy="5" r="2" /><circle cx="18" cy="7" r="2" /><circle cx="6" cy="19" r="2" />
+        <path d="M6 7v10M8 9c6 0 4-2 8-2" />
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" /><path d="m8 12 2.6 2.6L16.5 9" />
+      </symbol>
+      <symbol id="icon-copy" viewBox="0 0 24 24">
+        <rect x="8" y="8" width="11" height="11" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+      </symbol>
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" />
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" />
+      </symbol>
+      <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m9 18 6-6-6-6" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </symbol>
+    </svg>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Senior Developer Workflow Guide home">
+        <svg aria-hidden="true"><use href="#icon-code"></use></svg>
+        <span>CODEX + CLAUDE CODE</span>
+      </a>
+      <button class="icon-button menu-button" id="menu-button" aria-expanded="false" aria-controls="main-nav">
+        <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
+        <span class="sr-only">Open navigation</span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+        <a href="#roles">Roles</a>
+        <a href="#models">Models</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#prompts">Prompts</a>
+        <a href="#verification">Verification</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="theme-toggle" aria-label="Switch to light theme">
+          <svg class="sun-icon" aria-hidden="true"><use href="#icon-sun"></use></svg>
+          <svg class="moon-icon" aria-hidden="true"><use href="#icon-moon"></use></svg>
+        </button>
+        <a class="button button-small" href="#workflow">Start the workflow</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section-shell" id="roles">
+        <div class="hero-copy reveal">
+          <h1>Senior Developer<br />Workflow Guide</h1>
+          <p>Choose the right current model. Build in small slices.<br />Verify with evidence. Review independently.</p>
+          <a class="button" href="#models">
+            Compare current models
+            <svg aria-hidden="true"><use href="#icon-chevron"></use></svg>
+          </a>
+        </div>
+        <div class="operating-model reveal" aria-label="Combined operating model">
+          <article class="model-step claude">
+            <svg aria-hidden="true"><use href="#icon-brain"></use></svg>
+            <h2>Claude Code</h2>
+            <p>Plan + Review</p>
+          </article>
+          <svg class="flow-arrow" viewBox="0 0 44 24" aria-hidden="true"><path d="M2 12h36M31 5l7 7-7 7" /></svg>
+          <article class="model-step codex">
+            <svg aria-hidden="true"><use href="#icon-code"></use></svg>
+            <h2>Codex</h2>
+            <p>Implement + Verify</p>
+          </article>
+          <svg class="flow-arrow" viewBox="0 0 44 24" aria-hidden="true"><path d="M2 12h36M31 5l7 7-7 7" /></svg>
+          <article class="model-step human">
+            <svg aria-hidden="true"><use href="#icon-user"></use></svg>
+            <h2>Human</h2>
+            <p>Approve + Merge</p>
+          </article>
+        </div>
+
+        <div class="role-grid reveal">
+          <article class="role role-claude">
+            <div class="role-heading">
+              <svg aria-hidden="true"><use href="#icon-brain"></use></svg>
+              <h2>Claude Code —<br />Solution Architect</h2>
+            </div>
+            <ul>
+              <li>Clarify goals, constraints, and trade-offs.</li>
+              <li>Design the solution and define small slices.</li>
+              <li>Review outputs and provide feedback.</li>
+            </ul>
+          </article>
+          <article class="role role-codex">
+            <div class="role-heading">
+              <svg aria-hidden="true"><use href="#icon-code"></use></svg>
+              <h2>Codex —<br />Implementation Lead</h2>
+            </div>
+            <ul>
+              <li>Implement to the slice plan with tests.</li>
+              <li>Verify behavior and quality automatically.</li>
+              <li>Deliver evidence: commands, logs, and diffs.</li>
+            </ul>
+          </article>
+          <article class="role role-human">
+            <div class="role-heading">
+              <svg aria-hidden="true"><use href="#icon-user"></use></svg>
+              <h2>You —<br />Engineering Owner</h2>
+            </div>
+            <ul>
+              <li>Provide direction and guardrails.</li>
+              <li>Review changes and assess risk.</li>
+              <li>Approve and merge with confidence.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="model-guide section-shell section-rule" id="models">
+        <div class="section-heading reveal">
+          <div>
+            <h2>Choose the model<br />after you choose the job.</h2>
+            <p>Current developer guidance for ChatGPT Work, Codex, Claude Code, and their APIs — updated October 2026.</p>
+          </div>
+          <p class="freshness-note">Availability varies by product, plan, account, and region. Pin exact model IDs for reproducible benchmarks.</p>
+        </div>
+
+        <div class="surface-split reveal">
+          <article>
+            <h3>Product surface</h3>
+            <p><strong>ChatGPT, Work, and Codex</strong> expose different model menus, tools, reasoning levels, and permissions.</p>
+          </article>
+          <article>
+            <h3>Model endpoint</h3>
+            <p><strong>OpenAI and Claude APIs</strong> use explicit model IDs. Claude Code and Codex add repository, terminal, and agent workflows.</p>
+          </article>
+          <article>
+            <h3>Evaluation record</h3>
+            <p>Record the surface, exact model, effort, tools, permissions, prompt, fixtures, and date for every comparison.</p>
+          </article>
+        </div>
+
+        <div class="model-explorer reveal">
+          <div class="model-tabs" role="tablist" aria-label="Model guide">
+            <button role="tab" aria-selected="true" class="is-active" data-model-view="openai">OpenAI + Codex</button>
+            <button role="tab" aria-selected="false" data-model-view="claude">Claude + Claude Code</button>
+            <button role="tab" aria-selected="false" data-model-view="compare">Developer comparison</button>
+          </div>
+          <article class="model-panel" id="model-panel" aria-live="polite"></article>
+        </div>
+
+        <div class="routing-strip reveal" aria-label="Recommended model routing">
+          <article><strong>Default</strong><span>GPT-6.1 Sol in Codex for serious repository implementation.</span></article>
+          <article><strong>Escalate</strong><span>GPT-6 Astra or Claude Opus 5.5 for the hardest architecture, debugging, and review.</span></article>
+          <article><strong>Scale</strong><span>GPT-6 Luna for bounded, repeatable, latency-sensitive, or high-volume work.</span></article>
+          <article><strong>Review</strong><span>Claude Sonnet 5.5 as an independent read-only reviewer before the human gate.</span></article>
+        </div>
+
+        <div class="migration-note reveal">
+          <div>
+            <h3>Migration watchlist</h3>
+            <p>GPT-5.5 access in ChatGPT Work and Codex retires October 14, 2026. Claude Sonnet 4.5 is deprecated for the Claude API and is scheduled to retire November 30, 2026. API and product lifecycles can differ.</p>
+          </div>
+          <a class="button button-small" href="#prompts">Use the prompt playbooks</a>
+        </div>
+
+        <div class="model-sources reveal">
+          <span>Official sources:</span>
+          <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer">OpenAI models</a>
+          <a href="https://developers.openai.com/api/docs/guides/latest-model" target="_blank" rel="noreferrer">GPT-6 guide</a>
+          <a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">ChatGPT Work models</a>
+          <a href="https://www.anthropic.com/transparency" target="_blank" rel="noreferrer">Claude model report</a>
+          <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations" target="_blank" rel="noreferrer">Claude deprecations</a>
+          <a href="https://code.claude.com/docs/en/cli-usage" target="_blank" rel="noreferrer">Claude Code CLI</a>
+        </div>
+      </section>
+
+      <section class="workflow section-shell section-rule" id="workflow">
+        <div class="section-heading reveal">
+          <div>
+            <h2>One engineering system.<br />Twelve controlled phases.</h2>
+            <p>Every phase has a primary owner, required evidence, and a decision gate.</p>
+          </div>
+          <div class="owner-legend" aria-label="Owner color legend">
+            <span><i class="legend-claude"></i>Claude-led</span>
+            <span><i class="legend-codex"></i>Codex-led</span>
+            <span><i class="legend-human"></i>Human gate</span>
+          </div>
+        </div>
+
+        <div class="workflow-toolbar reveal" role="toolbar" aria-label="Filter workflow phases">
+          <button class="filter-button is-active" data-filter="all" aria-pressed="true">All phases</button>
+          <button class="filter-button" data-filter="claude" aria-pressed="false">Claude-led</button>
+          <button class="filter-button" data-filter="codex" aria-pressed="false">Codex-led</button>
+          <button class="filter-button" data-filter="human" aria-pressed="false">Human gates</button>
+        </div>
+
+        <div class="phase-rail reveal" id="phase-rail" role="list" aria-label="Twelve workflow phases"></div>
+
+        <article class="phase-detail reveal" id="phase-detail" aria-live="polite"></article>
+
+        <div class="decision-gates reveal">
+          <article><strong>A</strong><span><b>Contract approved</b>Architecture, scope, and acceptance criteria are clear.</span></article>
+          <article><strong>B</strong><span><b>Evidence complete</b>Checks pass and runtime behavior is demonstrated.</span></article>
+          <article><strong>C</strong><span><b>Release owned</b>Human reviews the diff and controls merge.</span></article>
+        </div>
+      </section>
+
+      <section class="playbook section-shell section-rule" id="playbook">
+        <div class="section-heading reveal">
+          <div>
+            <h2>Build, verify, review.</h2>
+            <p>Small slices, isolated ownership, independent evidence.</p>
+          </div>
+        </div>
+
+        <article class="worktree-map reveal">
+          <div class="subsection-label">Worktree map</div>
+          <div class="branch-line" aria-hidden="true"><span></span></div>
+          <div class="worktree-node main-node">
+            <svg aria-hidden="true"><use href="#icon-shield"></use></svg>
+            <h3>main <small>protected</small></h3>
+            <p>Only reviewed changes merge.</p>
+          </div>
+          <div class="worktree-node codex-node">
+            <svg aria-hidden="true"><use href="#icon-code"></use></svg>
+            <h3>codex/feature <small>Codex worktree</small></h3>
+            <p>Implements the slice. Runs checks. Creates commits.</p>
+          </div>
+          <div class="worktree-node claude-node">
+            <svg aria-hidden="true"><use href="#icon-search"></use></svg>
+            <h3>claude/review <small>Claude review worktree</small></h3>
+            <p>Reviews, probes, and reports. First pass stays read-only.</p>
+          </div>
+          <div class="worktree-node merge-node">
+            <svg aria-hidden="true"><use href="#icon-branch"></use></svg>
+            <h3>Merge via PR</h3>
+            <p>Human approval closes the loop.</p>
+          </div>
+        </article>
+
+        <div class="parallel-split reveal">
+          <article class="parallel-good">
+            <h3>Parallelize</h3>
+            <p class="muted">Independent work with finalized contracts.</p>
+            <ul>
+              <li><span>Implementation</span>Frontend and backend in separate worktrees.</li>
+              <li><span>Review & probing</span>Architecture, security, tests, accessibility.</li>
+              <li><span>Verification</span>Run independent checks and compare evidence.</li>
+            </ul>
+          </article>
+          <article class="parallel-stop">
+            <h3>Keep sequential</h3>
+            <p class="muted">Dependent work where order reduces risk.</p>
+            <ul>
+              <li><span>Contracts</span>Do not split frontend and backend before API agreement.</li>
+              <li><span>Migrations</span>One owner; dependent code follows schema.</li>
+              <li><span>Production</span>Deploy only after review and approval.</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="verification-rail reveal">
+          <div>
+            <div class="subsection-label">Verification rail</div>
+            <p>Independent evidence from multiple angles.</p>
+          </div>
+          <ol>
+            <li><strong>Typecheck</strong><span>Static types are valid.</span></li>
+            <li><strong>Lint</strong><span>Code style and quality.</span></li>
+            <li><strong>Unit</strong><span>Focused logic tests.</span></li>
+            <li><strong>Integration</strong><span>Contracts and services.</span></li>
+            <li><strong>E2E</strong><span>Critical user flows.</span></li>
+            <li><strong>Runtime</strong><span>Real environment.</span></li>
+          </ol>
+        </article>
+
+        <article class="review-loop reveal">
+          <div class="subsection-label">Focused review loop</div>
+          <div class="loop-steps">
+            <div class="loop-step codex"><svg aria-hidden="true"><use href="#icon-code"></use></svg><strong>Codex implements</strong><span>Builds and tests.</span></div>
+            <svg class="loop-arrow" viewBox="0 0 34 24" aria-hidden="true"><path d="M2 12h26M21 6l6 6-6 6" /></svg>
+            <div class="loop-step claude"><svg aria-hidden="true"><use href="#icon-search"></use></svg><strong>Claude reviews</strong><span>Finds evidence.</span></div>
+            <svg class="loop-arrow" viewBox="0 0 34 24" aria-hidden="true"><path d="M2 12h26M21 6l6 6-6 6" /></svg>
+            <div class="loop-step human"><svg aria-hidden="true"><use href="#icon-user"></use></svg><strong>Human triages</strong><span>Decides priorities.</span></div>
+            <svg class="loop-arrow" viewBox="0 0 34 24" aria-hidden="true"><path d="M2 12h26M21 6l6 6-6 6" /></svg>
+            <div class="loop-step codex"><svg aria-hidden="true"><use href="#icon-check"></use></svg><strong>Codex remediates</strong><span>Fixes confirmed issues.</span></div>
+          </div>
+          <p class="loop-caption">Repeat until the slice is ready to merge.</p>
+        </article>
+      </section>
+
+      <section class="prompts section-shell section-rule" id="prompts">
+        <div class="section-heading reveal">
+          <div>
+            <h2>Use the workflow<br />on your next task.</h2>
+            <p>Copy a proven prompt, run the checks, and keep the evidence.</p>
+          </div>
+        </div>
+
+        <div class="prompt-library reveal">
+          <div class="prompt-tabs" role="tablist" aria-label="Prompt library">
+            <button role="tab" aria-selected="false" data-prompt="architecture">Architecture</button>
+            <button role="tab" aria-selected="true" data-prompt="implementation" class="is-active">Implementation</button>
+            <button role="tab" aria-selected="false" data-prompt="review">Independent review</button>
+            <button role="tab" aria-selected="false" data-prompt="debugging">Evidence debugging</button>
+          </div>
+          <div class="prompt-code">
+            <pre><code id="prompt-text"></code></pre>
+            <button class="button copy-button" id="copy-prompt">
+              <svg aria-hidden="true"><use href="#icon-copy"></use></svg>
+              <span>Copy prompt</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="checks section-shell" id="verification">
+        <div class="checks-heading reveal">
+          <h2>Run the checks. Keep the evidence.</h2>
+          <button class="text-button" id="reset-checks">Reset checklist</button>
+        </div>
+        <div class="check-grid reveal">
+          <article data-check-group="web">
+            <h3>Web</h3>
+            <label><input type="checkbox" /> <span>Typecheck and lint pass</span></label>
+            <label><input type="checkbox" /> <span>Unit and E2E tests pass</span></label>
+            <label><input type="checkbox" /> <span>320px–1440px layouts checked</span></label>
+            <label><input type="checkbox" /> <span>Keyboard navigation works</span></label>
+            <label><input type="checkbox" /> <span>Console and network are clean</span></label>
+          </article>
+          <article data-check-group="mobile">
+            <h3>Mobile</h3>
+            <label><input type="checkbox" /> <span>Android and iOS checked</span></label>
+            <label><input type="checkbox" /> <span>Keyboard overlap checked</span></label>
+            <label><input type="checkbox" /> <span>Slow and offline states checked</span></label>
+            <label><input type="checkbox" /> <span>Deep links and permissions work</span></label>
+            <label><input type="checkbox" /> <span>Small and large screens checked</span></label>
+          </article>
+          <article data-check-group="desktop">
+            <h3>Desktop</h3>
+            <label><input type="checkbox" /> <span>Clean install and startup pass</span></label>
+            <label><input type="checkbox" /> <span>Resize and local files checked</span></label>
+            <label><input type="checkbox" /> <span>Permission denial handled</span></label>
+            <label><input type="checkbox" /> <span>Native boundary reviewed</span></label>
+            <label><input type="checkbox" /> <span>Packaging output verified</span></label>
+          </article>
+        </div>
+      </section>
+
+      <section class="closing section-shell">
+        <div class="closing-flow reveal">
+          <span>Define clearly</span><b>→</b><span>Work in small slices</span><b>→</b><span>Verify with evidence</span><b>→</b><span>Review independently</span><b>→</b><span>Merge intentionally</span>
+        </div>
+        <a class="button reveal" href="#workflow">Back to the workflow</a>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <span>Senior Developer Workflow Guide</span>
+      <span>Claude defines and reviews. Codex implements and verifies. You own the release.</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
