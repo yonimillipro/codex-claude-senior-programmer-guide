@@ -281,13 +281,19 @@ const modelViews = {
         use: "Benchmark it against Opus on your own repository before making it the default.",
       },
       {
+        name: "Claude Haiku 5.5",
+        role: "Fast + high volume",
+        description: "Released October 7, 2026 for latency-sensitive classification, extraction, routing, and bounded agent tasks.",
+        use: "Start from its medium effort default and evaluate correctness, latency, and retries. Full API model ID: claude-haiku-5-5.",
+      },
+      {
         name: "Claude Mythos 5.1",
         role: "Restricted research",
         description: "The same underlying model as Fable with different safeguards for trusted-access programs and Claude Security.",
         use: "It is not a general Claude Code default.",
       },
     ],
-    foot: "Claude Code accepts model aliases such as sonnet, opus, haiku, and fable, plus full model IDs. Run Claude Code and Codex as separate sessions against the same repository; use one writer per worktree and keep the first review pass read-only.",
+    foot: "Claude Code accepts model aliases such as sonnet, opus, haiku, and fable, plus full model IDs. Check the resolved version rather than assuming an alias always maps to the newest model. Run Claude Code and Codex as separate sessions with one writer per worktree.",
   },
 };
 

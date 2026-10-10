@@ -22,6 +22,7 @@
       })();
     </script>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="mastery.css" />
   </head>
   <body id="top">
     <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
@@ -84,6 +85,7 @@
       <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
         <a href="#roles">Roles</a>
         <a href="#models">Models</a>
+        <a href="#mastery">Model mastery</a>
         <a href="#workflow">Workflow</a>
         <a href="#prompts">Prompts</a>
         <a href="#verification">Verification</a>
@@ -103,6 +105,7 @@
     <main>
       <section class="hero section-shell" id="roles">
         <div class="hero-copy reveal">
+          <p class="release-badge">Version 2 · Developer model playbooks</p>
           <h1>Senior Developer<br />Workflow Guide</h1>
           <p>Choose the right current model. Build in small slices.<br />Verify with evidence. Review independently.</p>
           <a class="button" href="#models">
@@ -223,6 +226,52 @@
           <a href="https://www.anthropic.com/transparency" target="_blank" rel="noreferrer">Claude model report</a>
           <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations" target="_blank" rel="noreferrer">Claude deprecations</a>
           <a href="https://code.claude.com/docs/en/cli-usage" target="_blank" rel="noreferrer">Claude Code CLI</a>
+        </div>
+      </section>
+
+      <section class="mastery section-shell section-rule" id="mastery" aria-labelledby="mastery-heading">
+        <div class="section-heading">
+          <div>
+            <span class="mastery-eyebrow">MODEL MASTERY · VERSION 2</span>
+            <h2 id="mastery-heading">Get more from<br />every model.</h2>
+            <p>A developer’s practical guide to ChatGPT Astra, Sol mode, Claude Fable 5, and Claude Opus 5.</p>
+          </div>
+          <p class="freshness-note">Guidance checked October 10, 2026. The playbooks below cover the named models; the model catalog above includes newer versions.</p>
+        </div>
+
+        <div class="mastery-start">
+          <h3>Start with the right workspace</h3>
+          <p>In ChatGPT Work or Codex, choose an available model using the control beneath the composer. Open Advanced when you need a specific model or effort. Sol is available in Work and Codex, rather than ordinary Chat. For Claude, choose the exact model where your account supports it; check the selected version before reusing a prompt. Availability and controls vary by client and account.</p>
+          <a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">Read the official ChatGPT model controls ↗</a>
+          <p class="mastery-download"><a href="presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx" download="Codex and Claude_Senior_Programmer_Guide_Updated_Version_2.pptx">Download the matching Version 2 PowerPoint · 58 slides ↓</a></p>
+          <p class="mastery-download">Latest catalog addition: <a href="https://platform.claude.com/docs/en/models/haiku-5-5/overview" target="_blank" rel="noreferrer">Claude Haiku 5.5</a> for fast, high-volume tasks. The model explorer above includes it separately from the four playbooks.</p>
+        </div>
+
+        <div class="mastery-tabs" role="tablist" aria-label="Model mastery playbooks">
+          <button type="button" id="mastery-tab-astra" role="tab" aria-controls="mastery-panel" aria-selected="true" data-mastery="astra">ChatGPT Astra</button>
+          <button type="button" id="mastery-tab-sol" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="sol">ChatGPT Sol</button>
+          <button type="button" id="mastery-tab-fable" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="fable">Claude Fable 5</button>
+          <button type="button" id="mastery-tab-opus" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="opus">Claude Opus 5</button>
+        </div>
+        <article class="mastery-panel" id="mastery-panel" role="tabpanel" aria-labelledby="mastery-tab-astra" tabindex="0">
+          <p>Select a model playbook to explore its workflow and prompts.</p>
+          <noscript><p>Enable JavaScript to use the interactive model playbooks and prompt copier.</p></noscript>
+        </article>
+
+        <div class="mastery-practice">
+          <div>
+            <span class="mastery-eyebrow">YOUR PRACTICE ROUTINE</span>
+            <h3>Build a workflow you can trust.</h3>
+            <p>These are suggested developer exercises, not model benchmarks. Use the same repository and acceptance criteria when comparing models.</p>
+          </div>
+          <ol>
+            <li><strong>Give it a real brief.</strong> Describe the user problem, relevant paths, stack, constraints, and the result you will accept. Include a reproduction or screenshot when it clarifies the behavior.</li>
+            <li><strong>Choose a mode of work.</strong> Say whether you want an explanation, an implementation, or a review. Supply the repository for edits, a runnable environment for execution, and the relevant sources for research.</li>
+            <li><strong>Steer with specifics.</strong> If the result misses the mark, point to the exact behavior, file, screenshot region, or failed command. Give one actionable correction and keep the original goal visible.</li>
+            <li><strong>Measure your own result.</strong> Compare a feature, a reproduced bug, and a code review. Track accepted quality, elapsed time, cost, retries, and human intervention. Change effort only when the result warrants it.</li>
+            <li><strong>Save what worked.</strong> Turn a successful prompt into a small reusable template. Record stable project conventions in AGENTS.md or CLAUDE.md and revisit them when models or tools change.</li>
+          </ol>
+          <p class="mastery-note">A model choice does not supply tools by itself. In a text-only chat, request an explanation or patch you can apply; in Work, Codex, or Claude Code, make the needed files and execution tools available. Review the actual diff and evidence before release.</p>
         </div>
       </section>
 
@@ -408,11 +457,12 @@
     </main>
 
     <footer class="site-footer section-shell">
-      <span>Senior Developer Workflow Guide</span>
+      <span>Senior Developer Workflow Guide · Version 2 · October 10, 2026</span>
       <span>Claude defines and reviews. Codex implements and verifies. You own the release.</span>
     </footer>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
+    <script src="mastery.js"></script>
   </body>
 </html>

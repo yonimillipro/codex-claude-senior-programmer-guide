@@ -1,0 +1,62 @@
+.hero-copy .release-badge { display: inline-flex; padding: 6px 12px; margin: 0 0 22px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--cyan); font-size: 0.78rem; letter-spacing: 0.03em; }
+.main-nav { gap: clamp(14px, 1.65vw, 26px); }
+.mastery { padding-top: 80px; padding-bottom: 80px; }
+.mastery-eyebrow { color: var(--muted); font-size: 0.76rem; letter-spacing: 0.08em; font-weight: 700; }
+.mastery-start { background: var(--surface); padding: 26px; border: 1px solid var(--line); margin: 28px 0; border-radius: var(--radius); }
+.mastery-start h3, .mastery-practice h3 { font-size: 1.4rem; margin: 0 0 12px; }
+.mastery-start p { max-width: 1080px; margin: 0 0 16px; color: var(--muted); }
+.mastery-start a, .mastery-source { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; }
+.mastery-start .mastery-download { margin: 20px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.mastery-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+.mastery-tabs button { min-height: 52px; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer; font-size: 0.95rem; font-weight: 650; }
+.mastery-tabs button:hover { border-color: var(--blue); }
+.mastery-tabs button[aria-selected="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+.mastery-panel { border: 1px solid var(--line); border-top: 3px solid var(--mastery-accent, var(--blue)); padding: 32px; background: var(--surface); border-radius: var(--radius); min-width: 0; }
+.mastery-title { display: flex; justify-content: space-between; align-items: start; gap: 24px; }
+.mastery-title h3 { margin: 6px 0; font-size: clamp(1.65rem, 3vw, 2.5rem); letter-spacing: -0.04em; line-height: 1.15; }
+.mastery-title p { margin: 12px 0 24px; color: var(--muted); }
+.mastery-chip { flex-shrink: 0; color: var(--mastery-accent); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 0.75rem; }
+.mastery-settings { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 0 0 26px; padding: 24px 0; border-block: 1px solid var(--line); }
+.mastery-settings dt { font-weight: 700; color: var(--mastery-accent); margin-bottom: 8px; }
+.mastery-settings dd { margin: 0; color: var(--muted); }
+.mastery-tips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.mastery-tips section { min-width: 0; }
+.mastery-number { font-family: var(--font-mono); color: var(--mastery-accent); font-size: 0.8rem; }
+.mastery-tips h4 { margin: 6px 0; font-size: 1.1rem; }
+.mastery-tips p { margin: 0; color: var(--muted); }
+.mastery-note { color: var(--muted); padding: 18px 0; margin: 22px 0 6px; border-top: 1px solid var(--line); }
+.mastery-note strong { color: var(--text); }
+.mastery-prompt { margin-top: 28px; border: 1px solid var(--line); background: var(--bg-elevated); border-radius: var(--radius); overflow: hidden; }
+.mastery-prompt-heading { padding: 22px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; border-bottom: 1px solid var(--line); }
+.mastery-prompt-heading h4 { font-size: 1.2rem; margin: 0 0 6px; }
+.mastery-prompt-heading p { margin: 0; color: var(--muted); font-size: 0.9rem; max-width: 650px; }
+.mastery-prompt label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+.mastery-prompt select { background: var(--surface-strong); color: var(--text); border: 1px solid var(--line-strong); padding: 10px 12px; font: inherit; border-radius: 6px; min-height: 44px; width: 100%; }
+.mastery-prompt select:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.mastery-prompt pre { margin: 0; padding: 22px; white-space: pre-wrap; overflow-wrap: anywhere; font: 0.88rem/1.8 var(--font-mono); color: var(--text); }
+.mastery-copy-row { display: flex; gap: 16px; align-items: center; padding: 0 22px 22px; }
+.mastery-copy-row span { color: var(--muted); font-size: 0.85rem; }
+.mastery-exercise { padding: 18px 0 0; margin-top: 16px; border-top: 1px solid var(--line); }
+.mastery-exercise summary { cursor: pointer; font-weight: 650; min-height: 44px; }
+.mastery-exercise p { margin: 8px 0 0; color: var(--muted); }
+.mastery-practice { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 36px; padding: 32px 0 0; margin-top: 28px; border-top: 1px solid var(--line); }
+.mastery-practice h3 { margin-top: 10px; }
+.mastery-practice p { color: var(--muted); }
+.mastery-practice ol { margin: 0; padding-left: 24px; }
+.mastery-practice li { padding-left: 6px; margin-bottom: 16px; color: var(--muted); }
+.mastery-practice strong { color: var(--text); }
+.mastery-practice > .mastery-note { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 860px) {
+  .mastery { padding-block: 52px; }
+  .mastery-practice { grid-template-columns: 1fr; gap: 14px; }
+  .mastery-chip { display: none; }
+}
+@media (max-width: 560px) {
+  .mastery-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mastery-tabs button { font-size: 0.85rem; }
+  .mastery-panel, .mastery-start { padding: 20px; }
+  .mastery-settings, .mastery-tips, .mastery-prompt-heading { grid-template-columns: 1fr; gap: 20px; }
+  .mastery-prompt-heading, .mastery-prompt pre { padding: 16px; }
+  .mastery-copy-row { padding: 0 16px 16px; flex-direction: column; align-items: start; }
+  .mastery-eyebrow { overflow-wrap: anywhere; }
+}

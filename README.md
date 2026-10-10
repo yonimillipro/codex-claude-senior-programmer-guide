@@ -2,7 +2,29 @@
 
 An interactive learning resource and companion PowerPoint for senior developers using Codex, Claude Code, ChatGPT/OpenAI models, and Claude models in one evidence-driven engineering workflow.
 
-Updated: October 2026.
+Version 2 — updated October 10, 2026.
+
+## Version 2 model mastery
+
+The landing page includes an interactive developer playbook for ChatGPT Astra,
+ChatGPT Sol mode (with exact Sol version guidance), Claude Fable 5, and Claude
+Opus 5. Each playbook includes model-specific tips, effort guidance, an exercise,
+official source links, and copyable build/debug/review prompt examples.
+
+`mastery.js` powers the playbooks; `mastery.css` provides responsive styling in
+both light and dark themes. The Claude playbooks intentionally cover the exact
+Fable 5 and Opus 5 versions requested, separately from the newer model catalog.
+
+Production: https://codex-claude-senior-programmer-guid.vercel.app/#mastery
+
+The matching blue PowerPoint now contains 58 editable slides. The Version 2
+addition covers platform/model controls, exact versus newer versions, four
+model playbooks, three developer prompt scenarios, and a practice/evaluation
+loop. Relevant slide notes contain official sources and full prompt examples.
+The current Claude catalog also includes Haiku 5.5, released October 7, 2026,
+with its official overview linked on the page.
+
+[Download the Version 2 PowerPoint](presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx)
 
 ## Repository contents
 
@@ -10,7 +32,8 @@ Updated: October 2026.
 - `styles.css` — responsive light/dark visual system
 - `app.js` — model explorer, workflow filters, prompt library, and verification interactions
 - `favicon.svg` — site icon
-- `presentation/` — the complete 46-slide PowerPoint guide
+- `presentation/` — the complete 58-slide Version 2 PowerPoint guide
+- `mastery.js` and `mastery.css` — interactive, responsive model playbooks
 
 ## What the guide covers
 
