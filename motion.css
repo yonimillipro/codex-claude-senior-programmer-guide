@@ -1,0 +1,85 @@
+/* A decorative stage: the original role labels remain the source of meaning. */
+.operating-model.operating-model--motion {
+  display: block;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.collaboration-stage {
+  position: relative;
+  height: clamp(310px, 25vw, 380px);
+  isolation: isolate;
+  background: radial-gradient(ellipse at 48% 50%, color-mix(in srgb, var(--cyan) 5%, transparent), transparent 65%);
+}
+
+.collaboration-canvas,
+.collaboration-fallback {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.collaboration-canvas { visibility: hidden; }
+.collaboration-stage[data-ready="true"] .collaboration-canvas { visibility: visible; }
+.collaboration-stage[data-ready="true"] .collaboration-fallback { visibility: hidden; }
+.collaboration-fallback .orbit-codex { stroke: var(--cyan); }
+.collaboration-fallback .orbit-claude { stroke: var(--violet); }
+.collaboration-fallback .orbit-human { stroke: var(--mint); }
+
+.motion-toggle {
+  position: absolute;
+  right: 16px;
+  bottom: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--muted);
+  font: 600 .72rem var(--font-sans);
+  cursor: pointer;
+}
+
+.motion-toggle[hidden] { display: none; }
+.motion-toggle:hover:not(:disabled) { color: var(--text); border-color: var(--cyan); }
+.motion-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.motion-toggle:disabled { cursor: default; }
+.motion-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.motion-play-icon { display: none; }
+.motion-toggle[aria-pressed="true"] .motion-play-icon { display: block; }
+.motion-toggle[aria-pressed="true"] .motion-pause-icon { display: none; }
+
+.operating-steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr) 22px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 20px 24px;
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 65%, transparent);
+}
+
+.operating-steps .model-step { min-height: 0; padding: 0; border: none; }
+.operating-steps .model-step svg { width: 25px; height: 25px; margin-bottom: 8px; }
+.operating-steps .model-step h2 { margin: 0 0 8px; font-size: 1rem; }
+.operating-steps .model-step p { padding: 0; border: none; font-size: .78rem; }
+.operating-steps .flow-arrow { width: 22px; transform: none; }
+
+@media (max-width: 1180px) {
+  .collaboration-stage { height: 360px; }
+}
+@media (max-width: 600px) {
+  .collaboration-stage { height: 290px; }
+  .operating-steps { padding: 18px 8px; gap: 4px; grid-template-columns: minmax(0, 1fr) 14px minmax(0, 1fr) 14px minmax(0, 1fr); }
+  .operating-steps .flow-arrow { width: 14px; }
+  .operating-steps .model-step h2 { font-size: .83rem; }
+  .operating-steps .model-step p { font-size: .65rem; line-height: 1.5; }
+  .motion-toggle { right: 10px; bottom: 10px; }
+}

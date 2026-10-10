@@ -23,6 +23,8 @@
     </script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="mastery.css" />
+    <link rel="stylesheet" href="motion.css" />
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   </head>
   <body id="top">
     <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
@@ -113,7 +115,27 @@
             <svg aria-hidden="true"><use href="#icon-chevron"></use></svg>
           </a>
         </div>
-        <div class="operating-model reveal" aria-label="Combined operating model">
+        <div class="operating-model operating-model--motion reveal" role="group" aria-label="Combined operating model">
+          <div class="collaboration-stage" id="collaboration-stage" data-motion="fallback">
+            <svg class="collaboration-fallback" viewBox="0 0 720 380" aria-hidden="true">
+              <defs>
+                <radialGradient id="core-glow"><stop stop-color="#22d3ee" stop-opacity=".2"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+              </defs>
+              <circle cx="360" cy="190" r="150" fill="url(#core-glow)" stroke="none"/>
+              <g fill="none" stroke-width="2">
+                <ellipse cx="360" cy="190" rx="244" ry="85" transform="rotate(-22 360 190)" class="orbit-codex"/>
+                <ellipse cx="360" cy="190" rx="100" ry="157" transform="rotate(28 360 190)" class="orbit-claude"/>
+                <path d="m360 132 54 30v61l-54 31-54-31v-61Zm0 0v61m-54-31 54 31 54-31m-54 31v61" class="orbit-codex"/>
+                <circle cx="510" cy="271" r="7" class="orbit-human"/>
+              </g>
+            </svg>
+            <canvas class="collaboration-canvas" aria-hidden="true"></canvas>
+            <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path class="motion-pause-icon" d="M7 5v10M13 5v10"/><path class="motion-play-icon" d="m7 4 9 6-9 6Z"/></svg>
+              <span>Pause animation</span>
+            </button>
+          </div>
+          <div class="operating-steps">
           <article class="model-step claude">
             <svg aria-hidden="true"><use href="#icon-brain"></use></svg>
             <h2>Claude Code</h2>
@@ -131,6 +153,7 @@
             <h2>Human</h2>
             <p>Approve + Merge</p>
           </article>
+          </div>
         </div>
 
         <div class="role-grid reveal">
@@ -464,5 +487,6 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
     <script src="mastery.js"></script>
+    <script type="module" src="motion.js"></script>
   </body>
 </html>

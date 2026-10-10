@@ -34,6 +34,24 @@ with its official overview linked on the page.
 - `favicon.svg` — site icon
 - `presentation/` — the complete 58-slide Version 2 PowerPoint guide
 - `mastery.js` and `mastery.css` — interactive, responsive model playbooks
+- `motion.js`, `motion.css`, and `collaboration-scene.js` — GSAP + Three.js hero animation
+- `vendor/` — pinned, self-hosted GSAP 3.15.0 and Three.js 0.186.1 with license notices
+
+## Collaboration animation
+
+The hero visual brings the operating model to life: violet Claude and cyan Codex
+orbit ribbons around a faceted shared core, with a mint human approval checkpoint.
+GSAP drives packet movement and subtle pointer parallax; Three.js renders the scene.
+The existing role labels, typography, and light/dark theme stay intact.
+
+Use **Pause animation** to stop motion, or **Resume animation** to restart it.
+System reduced-motion preferences display a still scene. Animation pauses offscreen
+and in hidden tabs, caps pixel density, and uses fewer ribbon strands and particles
+on phones. A static SVG remains visible when WebGL or JavaScript is unavailable.
+
+The animation requires HTTP serving because it uses JavaScript modules. Opening
+`index.html` directly still provides the learning page and static hero fallback.
+There is no runtime CDN dependency, texture download, or build step.
 
 ## What the guide covers
 
