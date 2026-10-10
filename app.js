@@ -614,18 +614,32 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
 const navLinks = [...mainNav.querySelectorAll("a")];
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    const active = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (!active) return;
-    navLinks.forEach((link) => link.classList.toggle("is-active", link.hash === `#${active.target.id}`));
-  },
-  // Enter/leave events also cover sections taller than the viewport.
-  { rootMargin: "-25% 0px -60%", threshold: 0 },
-);
-document.querySelectorAll("main section[id]").forEach((section) => sectionObserver.observe(section));
+const navSections = navLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
+let navFramePending = false;
+function updateActiveNav() {
+  navFramePending = false;
+  // Read all linked sections: observer change entries are not a visibility snapshot.
+  const headerHeight = document.querySelector(".site-header").getBoundingClientRect().height;
+  const readingLine = Math.max(headerHeight + 24, Math.min(window.innerHeight * 0.3, 260));
+  let active = navSections[0];
+  navSections.forEach(section => {
+    if (section.getBoundingClientRect().top <= readingLine) active = section;
+  });
+  navLinks.forEach(link => link.classList.toggle("is-active", link.hash === `#${active.id}`));
+}
+function scheduleActiveNav() {
+  if (navFramePending) return;
+  navFramePending = true;
+  requestAnimationFrame(updateActiveNav);
+}
+window.addEventListener("scroll", scheduleActiveNav, { passive: true });
+window.addEventListener("resize", scheduleActiveNav);
+window.addEventListener("hashchange", scheduleActiveNav);
+new ResizeObserver(scheduleActiveNav).observe(document.querySelector("main"));
+new MutationObserver(scheduleActiveNav).observe(document.documentElement, {
+  attributes: true, attributeFilter: ["data-theme"],
+});
+updateActiveNav();
 
 function updateReadingProgress() {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
