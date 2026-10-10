@@ -622,7 +622,8 @@ const sectionObserver = new IntersectionObserver(
     if (!active) return;
     navLinks.forEach((link) => link.classList.toggle("is-active", link.hash === `#${active.target.id}`));
   },
-  { rootMargin: "-25% 0px -60%", threshold: [0.05, 0.2, 0.5] },
+  // Enter/leave events also cover sections taller than the viewport.
+  { rootMargin: "-25% 0px -60%", threshold: 0 },
 );
 document.querySelectorAll("main section[id]").forEach((section) => sectionObserver.observe(section));
 
