@@ -7,7 +7,7 @@ import { createChatHandler } from '../server/chat-handler.js';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const host = '127.0.0.1'; const port = Number(process.env.PORT || 4176);
 const handle = createChatHandler();
-const allowed = new Set(['index.html', 'styles.css', 'app.js', 'mastery.css', 'mastery.js', 'motion.css', 'motion.js', 'collaboration-scene.js', 'chat.css', 'chat.js', 'favicon.svg']);
+const allowed = new Set(['index.html', 'styles.css', 'app.js', 'mastery.css', 'mastery.js', 'motion.css', 'motion.js', 'collaboration-scene.js', 'chat.css', 'chat.js', 'guide-help-data.js', 'favicon.svg']);
 const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation', '.txt': 'text/plain' };
 http.createServer(async (incoming, outgoing) => {
   const url = new URL(incoming.url, `http://${host}:${port}`);

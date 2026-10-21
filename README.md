@@ -64,13 +64,40 @@ There is no runtime CDN dependency, texture download, or build step.
 - Web, mobile, and desktop verification checklists
 - Human approval, merge, deployment, and rollback gates
 
-## Ask AI chat
+## Free guide helper
 
-The fixed **Ask AI** pill opens a responsive, non-modal guide assistant. It can
-answer guide questions and general developer questions, remembers bounded recent
-turns for follow-ups within the page, streams replies, and supports Stop, Retry,
-Clear chat, keyboard use and both themes. Closing stops an unfinished request.
-History is not saved to browser storage or a website database.
+The fixed **Ask AI** pill now opens a clearly labelled **Guide helper**, not a
+live chatbot. It searches 16 prepared answers about roles, the workflow,
+prompting, debugging, review, verification, repository guidance, parallel work,
+model playbooks, the PowerPoint, themes, animation, costs and privacy. Native
+disclosures expand each answer and link to its guide section or deck download.
+
+Search is immediate, local, case-insensitive and IME-safe, with common keyword
+aliases, a clear button and an honest no-results state. All 16 answers are
+browsable without a query. The question and current results stay in page memory,
+not local storage, URLs, analytics or a database. The helper makes **no calls to
+`/api/chat` or an AI provider**, including connection/readiness checks. It needs
+no API key, Redis account, ChatGPT Plus subscription or AI API credit.
+
+For an open-ended question, **Ask in ChatGPT** prepares a reviewable prompt with
+the question, up to three relevant guide answers, source links and the guide's
+content date. Visitors explicitly choose **Copy prompt**, then **Open ChatGPT**
+in a new tab and paste/send it themselves. The plain `https://chatgpt.com/` link
+contains no question or context, uses `noopener noreferrer`, and sends no referrer.
+Visitors use their own ChatGPT access and limits; no account sharing or sign-in
+integration is implemented. Clipboard denial shows a selectable manual-copy
+fallback. Changing the question clears the old prompt; stale clipboard feedback
+cannot overwrite a newer state. No HTML is interpreted from user text.
+
+`chat.js` owns the existing accessible, non-modal panel and `chat.css` preserves
+its reference pill, themes, mobile bounds, reduced motion and focus handling.
+`guide-help-data.js` owns prepared content, deterministic search and prompt
+assembly. This deliberately replaces the former live-chat UI; paid generation
+remains disabled (`CHAT_ENABLED=false`). The existing API code is retained only
+as an optional future backend, with no frontend path to it.
+
+<details>
+<summary>Optional future paid backend — not used by the free helper</summary>
 
 `api/chat.js` is a Vercel Node.js Function; `server/` contains private server
 code. It uses the OpenAI Responses API through AI SDK 7 and `@ai-sdk/openai`.
@@ -156,31 +183,34 @@ Questions are limited to 2,000 characters, history to 9 messages / 9,000 charact
 and output to 600 tokens. The model and tools cannot be chosen by visitors.
 Upstream requests time out and stop on client cancellation. `store: false` avoids
 OpenAI response-state storage; it is **not** a claim that the provider retains no
-data. The panel discloses that messages are sent to the AI provider.
+data. Any future paid frontend must disclose that messages go to the provider.
 
 An alternative is [Vercel AI Gateway with OIDC](https://vercel.com/docs/ai-gateway/authentication-and-byok),
 which can avoid manually managing an OpenAI key. That is **not enabled in this
 implementation** and needs a deliberate provider/auth/budget configuration;
-the website cannot share an owner's ChatGPT login with visitors.
+the website cannot share an owner's ChatGPT login with visitors. Enabling this
+backend alone does not convert the free helper into a live chatbot; a deliberate
+frontend integration and new verification would also be needed.
+
+</details>
 
 ## Run the landing page locally
 
-For the full site plus chat endpoint, use Node.js 24 and pnpm:
+Use Node.js 24 and pnpm (no environment variables are needed for the free helper):
 
 ```powershell
 pnpm install --frozen-lockfile
-# Copy .env.example to .env.local and configure Development secrets privately.
 pnpm dev
 ```
 
-Open http://127.0.0.1:4176. Without configuration, the UI honestly reports that
-AI chat is not connected; it does not fall back to canned answers. `pnpm test`
-uses the SDK's mock model and fake Redis transport; it makes no paid AI calls.
+Open http://127.0.0.1:4176. The prepared guide answers work without API setup.
+`pnpm test` covers the free helper and the dormant backend; provider tests use the
+SDK's mock model and fake Redis transport, making no paid AI calls.
 `pnpm build` creates the allowlisted public site in `dist/`, excluding secrets,
 server source, tests, dependencies and configuration. Vercel bundles the API
 Function separately. `DESIGN.md` documents the existing tokens and chat behavior.
 
-The original static content can still be opened directly or served without Node:
+The static site and free helper can also be served without Node:
 
 ```powershell
 python -m http.server 4173
@@ -188,8 +218,10 @@ python -m http.server 4173
 
 Then visit http://localhost:4173.
 
-The Python server and direct-file mode do not run the AI endpoint. Use the full
-development server or Vercel for chat.
+The Python server supports the free helper, but not the optional AI endpoint.
+Opening `index.html` directly provides the static guide; serve over HTTP for
+JavaScript modules, the helper and animation. Offline use works after the page's
+assets have loaded; there is no service worker or guarantee of an offline reload.
 
 ## GitHub Pages
 

@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Senior Developer Workflow Guide
-description: An engineering field guide with an optional conversational workflow companion.
+description: An engineering field guide with a free prepared-answer helper and explicit ChatGPT handoff.
 colors:
   primary: "#3b82f6"
   background: "#07111f"
@@ -66,8 +66,11 @@ body text, a 20px title and a restrained mono caption; code is a real `<pre><cod
 Do not change the guide's sections, navigation or hero for chat. A fixed bottom-right
 launcher opens a 420px non-modal panel above it. At narrow widths the panel fits
 the viewport minus 24–32px, respects safe areas and the visual viewport, and keeps
-the composer reachable above the keyboard. Only the chat transcript scrolls;
+the composer reachable above the keyboard. Only the helper's answer/prompt body scrolls;
 the page's document scroll remains available. No body scroll locking.
+The free-answer variant raises the maximum panel height to 700px (still bounded
+by the visual viewport) and uses a compact welcome so answers remain visible
+above the question field. This is an approved behavior replacement, not a rebrand.
 
 ## Elevation & Depth
 
@@ -86,17 +89,23 @@ variant, not a change to all buttons or cards.
 
 - Canonical chat owner: `chat.js` + `chat.css` and the `ask-ai-*` markup in `index.html`.
 - Fields: native labelled textarea; no custom select/date primitives are introduced.
-- Form states: connection-checking, unavailable, idle, thinking/streaming, complete,
-  stopped, inline error/retry, and inline clear confirmation. Duplicate sends are
-  blocked. Errors preserve the question, and old requests cannot overwrite newer ones.
+- Free-helper states: all prepared answers, local filtered results, no matches,
+  expanded FAQ, prompt review, copying, copied, and clipboard-denied/manual copy.
+  Search is IME-safe; clearing is immediate. The transient question is deliberately
+  excluded from URL state and browser storage because it may contain sensitive text.
 - Non-modal dialog: no backdrop, focus trap or inert page. Focus enters the composer;
   Escape and Close dismiss it and restore the launcher. Normal document Tab order
-  remains available. Closing stops an unfinished request but preserves this page's chat.
-- Chat history stays in page memory; it is not written to browser storage or a database.
-  Sending shares bounded recent messages with the configured AI provider. The UI
-  warns against secrets. Provider retention is not represented as zero retention.
-- Output is text nodes/code blocks, never model-generated HTML. Replies have an
-  accessible completion announcement; manual scrolling is respected during streaming.
+  remains available. Closing preserves the question only for this page's lifetime.
+- Prepared content is explicitly labelled, never presented as live AI. Search does
+  not call the backend or provider. The previous paid backend is dormant and disabled.
+- Ask in ChatGPT prepares question + relevant guide context for review in the panel.
+  Copy prompt is explicit. Clipboard denial exposes selectable text and a recovery
+  hint. Open ChatGPT is a separate plain-link new-tab action, with no prompt in its
+  URL and no referrer. Nothing is pasted or submitted automatically. External plan
+  access/limits are the visitor's; the helper never promises unlimited free AI.
+- Output uses text nodes and native details/summary, never interpreted user HTML.
+  This bounded 16-answer collection intentionally renders all default results.
+  Clipboard feedback is local, polite and guarded against stale completions.
 - Native buttons define hover, active, visible focus and disabled states. Touch
   actions are at least 44px where practical. Reduced motion removes panel animation.
 - Scrollbar ownership: `chat.css` supplies one document-wide baseline with inherited
@@ -106,7 +115,7 @@ variant, not a change to all buttons or cards.
 
 - Do preserve the field-guide palette and existing controls; let the provided pill
   reference define the launcher's silhouette.
-- Do distinguish a connected model from mocked test data or unavailable configuration.
+- Do distinguish prepared guide answers from live AI. Keep external handoff explicit.
 - Don't expose API keys, accept a browser-selected model, or enable paid public
   requests without configured credentials and distributed quotas.
 - Don't claim a request-count quota is a guaranteed dollar spending cap.

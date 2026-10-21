@@ -491,32 +491,43 @@
       <header class="ask-ai-header">
         <div class="ask-ai-identity">
           <svg aria-hidden="true"><use href="#icon-code"></use></svg>
-          <div><p class="ask-ai-eyebrow">YOUR WORKFLOW COMPANION</p><h2 id="ask-ai-title">Ask AI</h2></div>
+          <div><p class="ask-ai-eyebrow">FREE · NO API REQUIRED</p><h2 id="ask-ai-title">Guide helper</h2></div>
         </div>
-        <button class="ask-ai-icon-button" id="ask-ai-close" type="button" aria-label="Close AI chat" title="Close AI chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        <button class="ask-ai-icon-button" id="ask-ai-close" type="button" aria-label="Close guide helper" title="Close guide helper"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
       </header>
-      <div class="ask-ai-thread" id="ask-ai-thread" tabindex="0" aria-label="Chat messages">
+      <div class="ask-ai-thread" id="ask-ai-thread" tabindex="0" aria-label="Guide answers and ChatGPT prompt">
         <div class="ask-ai-welcome" id="ask-ai-welcome">
-          <span class="ask-ai-mark" aria-hidden="true"><svg><use href="#icon-brain"></use></svg><span>+</span><svg><use href="#icon-code"></use></svg></span>
-          <h3>Where should we start?</h3>
-          <p id="ask-ai-description">Understand the guide, improve your prompts, or work through a developer question.</p>
-          <div class="ask-ai-starters">
-            <button type="button" data-chat-question="How should I use Codex and Claude Code together?">How do Codex and Claude work together?<span aria-hidden="true">↗</span></button>
-            <button type="button" data-chat-question="Help me write an effective prompt for a coding task. What information should I include?">Help me write a better coding prompt<span aria-hidden="true">↗</span></button>
+          <h3>Find your next step.</h3>
+          <p id="ask-ai-description">Search prepared guide answers—not live AI. For open-ended questions, continue in ChatGPT.</p>
+          <div class="guide-topics" aria-label="Suggested guide searches">
+            <button type="button" data-guide-question="Codex Claude together">Codex + Claude</button>
+            <button type="button" data-guide-question="coding prompt">Better prompts</button>
+            <button type="button" data-guide-question="verification testing">Testing</button>
+            <button type="button" data-guide-question="PowerPoint">PowerPoint</button>
           </div>
         </div>
-        <div id="ask-ai-messages"></div>
+        <section class="guide-handoff" id="ask-ai-handoff" aria-labelledby="ask-ai-handoff-title" hidden>
+          <h3 id="ask-ai-handoff-title" tabindex="-1">Continue in ChatGPT</h3>
+          <p>Review this prompt, copy it, then open ChatGPT and paste it there. Nothing is sent automatically. Your ChatGPT access and limits apply.</p>
+          <label for="ask-ai-prompt">Your question + relevant guide context</label>
+          <textarea class="resize-none" id="ask-ai-prompt" readonly rows="5" spellcheck="false"></textarea>
+          <div class="guide-handoff-actions"><button type="button" id="ask-ai-copy">1. Copy prompt</button><a id="ask-ai-open-chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">2. Open ChatGPT ↗<span class="sr-only"> (new tab)</span></a></div>
+          <p class="guide-copy-feedback" id="ask-ai-copy-feedback" role="status" aria-live="polite"></p>
+          <button class="guide-text-button" type="button" id="ask-ai-handoff-close">Back to guide answers</button>
+        </section>
+        <p class="guide-result-count" id="ask-ai-count" role="status" aria-live="polite" tabindex="-1"></p>
+        <div class="guide-no-results" id="ask-ai-no-results" hidden><h3>No matching guide answer</h3><p>Try a keyword such as “prompts”, “testing” or “PowerPoint”, or use Ask in ChatGPT for your specific question.</p></div>
+        <div id="ask-ai-results"></div>
       </div>
       <div class="ask-ai-bottom">
-        <div class="ask-ai-notice" id="ask-ai-notice" role="status"><span id="ask-ai-notice-text">Checking the AI connection…</span><button type="button" id="ask-ai-reconnect" hidden>Check again</button></div>
-        <div class="ask-ai-error" id="ask-ai-error" role="alert" hidden><span id="ask-ai-error-text"></span><button type="button" id="ask-ai-retry">Retry question</button></div>
+        <p class="guide-input-label"><label for="ask-ai-input">Your question or search</label></p>
         <form class="ask-ai-form" id="ask-ai-form" novalidate>
-          <label class="sr-only" for="ask-ai-input">Your question</label>
-          <textarea id="ask-ai-input" rows="2" maxlength="2000" placeholder="Ask a question…" aria-describedby="ask-ai-help ask-ai-error-text"></textarea>
-          <div class="ask-ai-composer-actions"><span id="ask-ai-help">Enter to send · Shift+Enter for a new line</span><button id="ask-ai-send" type="submit" disabled aria-label="Send question"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button><button id="ask-ai-stop" type="button" hidden>Stop</button></div>
+          <div class="guide-input-row"><textarea class="resize-none" id="ask-ai-input" rows="2" maxlength="2000" placeholder="Try “How do I test before release?”" aria-describedby="ask-ai-help ask-ai-error"></textarea><button class="ask-ai-icon-button" id="ask-ai-input-clear" type="button" aria-label="Clear question and search" title="Clear question and search" hidden>×</button></div>
+          <div class="ask-ai-composer-actions"><span id="ask-ai-help">Searches this guide only</span><button id="ask-ai-send" type="submit">Find answers</button></div>
         </form>
-        <div class="ask-ai-clear-confirm" id="ask-ai-clear-confirm" hidden><span>Remove this conversation from this page?</span><button type="button" id="ask-ai-clear-yes">Clear chat</button><button type="button" id="ask-ai-clear-no">Keep chat</button></div>
-        <div class="ask-ai-footer"><p>Questions and recent messages go to our AI provider. Don’t share secrets. AI can make mistakes.</p><button type="button" id="ask-ai-clear" disabled>Clear chat</button></div>
+        <p class="ask-ai-error" id="ask-ai-error" role="alert" hidden></p>
+        <button class="guide-prepare" type="button" id="ask-ai-prepare" disabled>Ask in ChatGPT <span aria-hidden="true">↗</span></button>
+        <p class="guide-privacy">No AI API calls. Your question stays on this page unless you choose to copy and share it. Don’t include secrets.</p>
         <p class="sr-only" id="ask-ai-status" role="status" aria-live="polite"></p>
       </div>
     </section>

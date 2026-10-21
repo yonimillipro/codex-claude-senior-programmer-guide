@@ -8,7 +8,7 @@ await rm(target, { recursive: true, force: true });
 await mkdir(target, { recursive: true });
 // Explicit public allowlist: server code, secrets, tests and dependencies are never
 // copied into the static output. Vercel bundles api/chat.js separately.
-for (const file of ['index.html', 'styles.css', 'app.js', 'mastery.css', 'mastery.js', 'motion.css', 'motion.js', 'collaboration-scene.js', 'chat.css', 'chat.js', 'favicon.svg', 'vendor', 'presentation']) {
+for (const file of ['index.html', 'styles.css', 'app.js', 'mastery.css', 'mastery.js', 'motion.css', 'motion.js', 'collaboration-scene.js', 'chat.css', 'chat.js', 'guide-help-data.js', 'favicon.svg', 'vendor', 'presentation']) {
   await cp(path.join(root, file), path.join(target, file), { recursive: true });
 }
 console.log('Built public site in dist/; server files excluded.');
