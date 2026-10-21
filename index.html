@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="mastery.css" />
     <link rel="stylesheet" href="motion.css" />
+    <link rel="stylesheet" href="chat.css" />
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   </head>
   <body id="top">
@@ -485,8 +486,43 @@
     </footer>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <button class="ask-ai-launcher" id="ask-ai-launcher" type="button" aria-expanded="false" aria-controls="ask-ai-panel" aria-haspopup="dialog" hidden>Ask AI</button>
+    <section class="ask-ai-panel" id="ask-ai-panel" role="dialog" aria-modal="false" aria-labelledby="ask-ai-title" aria-describedby="ask-ai-description" hidden>
+      <header class="ask-ai-header">
+        <div class="ask-ai-identity">
+          <svg aria-hidden="true"><use href="#icon-code"></use></svg>
+          <div><p class="ask-ai-eyebrow">YOUR WORKFLOW COMPANION</p><h2 id="ask-ai-title">Ask AI</h2></div>
+        </div>
+        <button class="ask-ai-icon-button" id="ask-ai-close" type="button" aria-label="Close AI chat" title="Close AI chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </header>
+      <div class="ask-ai-thread" id="ask-ai-thread" tabindex="0" aria-label="Chat messages">
+        <div class="ask-ai-welcome" id="ask-ai-welcome">
+          <span class="ask-ai-mark" aria-hidden="true"><svg><use href="#icon-brain"></use></svg><span>+</span><svg><use href="#icon-code"></use></svg></span>
+          <h3>Where should we start?</h3>
+          <p id="ask-ai-description">Understand the guide, improve your prompts, or work through a developer question.</p>
+          <div class="ask-ai-starters">
+            <button type="button" data-chat-question="How should I use Codex and Claude Code together?">How do Codex and Claude work together?<span aria-hidden="true">↗</span></button>
+            <button type="button" data-chat-question="Help me write an effective prompt for a coding task. What information should I include?">Help me write a better coding prompt<span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+        <div id="ask-ai-messages"></div>
+      </div>
+      <div class="ask-ai-bottom">
+        <div class="ask-ai-notice" id="ask-ai-notice" role="status"><span id="ask-ai-notice-text">Checking the AI connection…</span><button type="button" id="ask-ai-reconnect" hidden>Check again</button></div>
+        <div class="ask-ai-error" id="ask-ai-error" role="alert" hidden><span id="ask-ai-error-text"></span><button type="button" id="ask-ai-retry">Retry question</button></div>
+        <form class="ask-ai-form" id="ask-ai-form" novalidate>
+          <label class="sr-only" for="ask-ai-input">Your question</label>
+          <textarea id="ask-ai-input" rows="2" maxlength="2000" placeholder="Ask a question…" aria-describedby="ask-ai-help ask-ai-error-text"></textarea>
+          <div class="ask-ai-composer-actions"><span id="ask-ai-help">Enter to send · Shift+Enter for a new line</span><button id="ask-ai-send" type="submit" disabled aria-label="Send question"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button><button id="ask-ai-stop" type="button" hidden>Stop</button></div>
+        </form>
+        <div class="ask-ai-clear-confirm" id="ask-ai-clear-confirm" hidden><span>Remove this conversation from this page?</span><button type="button" id="ask-ai-clear-yes">Clear chat</button><button type="button" id="ask-ai-clear-no">Keep chat</button></div>
+        <div class="ask-ai-footer"><p>Questions and recent messages go to our AI provider. Don’t share secrets. AI can make mistakes.</p><button type="button" id="ask-ai-clear" disabled>Clear chat</button></div>
+        <p class="sr-only" id="ask-ai-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
     <script src="app.js"></script>
     <script src="mastery.js"></script>
+    <script type="module" src="chat.js"></script>
     <script type="module" src="motion.js"></script>
   </body>
 </html>
