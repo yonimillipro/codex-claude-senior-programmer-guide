@@ -4,14 +4,20 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Readable } from 'node:stream';
 import { createChatHandler } from '../server/chat-handler.js';
+import { publicFiles, publicDirectories, renderServiceWorker } from './pwa-assets.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const host = '127.0.0.1'; const port = Number(process.env.PORT || 4176);
 const handle = createChatHandler();
-const allowed = new Set(['index.html', 'styles.css', 'app.js', 'mastery.css', 'mastery.js', 'motion.css', 'motion.js', 'collaboration-scene.js', 'chat.css', 'chat.js', 'guide-help-data.js', 'favicon.svg']);
-const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation', '.txt': 'text/plain' };
+const allowed = new Set(publicFiles);
+const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.webmanifest': 'application/manifest+json', '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation', '.txt': 'text/plain' };
 http.createServer(async (incoming, outgoing) => {
   const url = new URL(incoming.url, `http://${host}:${port}`);
   try {
+    if (url.pathname === '/sw.js') {
+      const worker = await renderServiceWorker(root);
+      outgoing.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8', 'Cache-Control': 'no-store' }).end(worker);
+      return;
+    }
     if (url.pathname === '/api/chat') {
       const cancellation = new AbortController(); outgoing.on('close', () => { if (!outgoing.writableEnded) cancellation.abort(); });
       const init = { method: incoming.method, headers: incoming.headers, signal: cancellation.signal };
@@ -22,8 +28,9 @@ http.createServer(async (incoming, outgoing) => {
       return;
     }
     const name = decodeURIComponent(url.pathname === '/' ? 'index.html' : url.pathname.slice(1));
-    if (!allowed.has(name) && !name.startsWith('vendor/') && !name.startsWith('presentation/')) { outgoing.writeHead(404).end('Not found'); return; }
-    const target = path.resolve(root, name);
+    const relative = path.posix.normalize(name.replaceAll('\\', '/'));
+    if (!allowed.has(relative) && !publicDirectories.some(dir => relative.startsWith(dir + '/'))) { outgoing.writeHead(404).end('Not found'); return; }
+    const target = path.resolve(root, relative);
     if (!target.startsWith(root)) { outgoing.writeHead(403).end(); return; }
     const stream = createReadStream(target);
     stream.on('error', () => { if (!outgoing.headersSent) outgoing.writeHead(404); outgoing.end(); });

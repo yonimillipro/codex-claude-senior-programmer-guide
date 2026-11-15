@@ -194,6 +194,32 @@ frontend integration and new verification would also be needed.
 
 </details>
 
+## Install as a web app
+
+Open the [live guide](https://codex-claude-senior-programmer-guid.vercel.app/) online
+and choose **Install app** near the title. The in-page install button appears when
+the browser offers it; **How to install on your device** lists the browser-menu
+alternatives. On iPhone or iPad, open the link in Safari and choose
+**Share → Add to Home Screen** (enable **Open as Web App** if offered).
+
+Wait for **Saved for offline reading** before disconnecting. The entire guide,
+model playbooks, prompt library, local FAQ helper, illustrations, animation assets,
+and PowerPoint are saved together. Theme and checklist preferences keep their
+existing browser-local behavior. External links and ChatGPT require a connection;
+the optional AI endpoint is neither called by the helper nor cached.
+Browsers can evict offline data, or remove it when the user clears site data.
+
+`manifest.webmanifest` defines the standalone app, identity and scope, install
+icons, desktop/mobile screenshots and three deep-link shortcuts. Shortcut and
+screenshot support varies by browser. The generated `sw.js` precaches only
+allowlisted public files and uses a content-derived release ID; it never stores
+API requests or responses, external content or form inputs. A failed precache
+leaves the previous release intact. A completed update waits until open guide
+windows close, or until the reader chooses **Update and reload**. An uncached
+navigation without a connection offers a link back to the saved guide.
+Push notifications, background sync, and permissions are intentionally not used:
+the guide has no background jobs or user data to sync.
+
 ## Run the landing page locally
 
 Use Node.js 24 and pnpm (no environment variables are needed for the free helper):
@@ -203,7 +229,7 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open http://127.0.0.1:4176. The prepared guide answers work without API setup.
+Open http://127.0.0.1:4176. The prepared guide answers and PWA work without API setup.
 `pnpm test` covers the free helper and the dormant backend; provider tests use the
 SDK's mock model and fake Redis transport, making no paid AI calls.
 `pnpm build` creates the allowlisted public site in `dist/`, excluding secrets,
@@ -219,6 +245,8 @@ python -m http.server 4173
 Then visit http://localhost:4173.
 
 The Python server supports the free helper, but not the optional AI endpoint.
+Serve the generated `dist/` directory with it to test the PWA; the raw source root
+does not contain the generated service worker.
 Opening `index.html` directly provides the static guide; serve over HTTP for
 JavaScript modules, the helper and animation. Offline use works after the page's
 assets have loaded; there is no service worker or guarantee of an offline reload.

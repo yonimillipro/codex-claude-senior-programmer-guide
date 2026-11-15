@@ -10,6 +10,8 @@
     <title>Senior Developer Workflow Guide</title>
     <meta name="theme-color" content="#07111f" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="pwa/apple-touch-icon.png" />
     <script>
       (() => {
         try {
@@ -25,6 +27,8 @@
     <link rel="stylesheet" href="mastery.css" />
     <link rel="stylesheet" href="motion.css" />
     <link rel="stylesheet" href="chat.css" />
+    <link rel="stylesheet" href="pwa.css" />
+    <script src="pwa.js" defer></script>
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   </head>
   <body id="top">
@@ -115,6 +119,7 @@
             Compare current models
             <svg aria-hidden="true"><use href="#icon-chevron"></use></svg>
           </a>
+          <a class="pwa-jump" href="#install">Install app</a>
         </div>
         <div class="operating-model operating-model--motion reveal" role="group" aria-label="Combined operating model">
           <div class="collaboration-stage" id="collaboration-stage" data-motion="fallback">
@@ -191,6 +196,36 @@
               <li>Approve and merge with confidence.</li>
             </ul>
           </article>
+        </div>
+      </section>
+
+      <section class="pwa-install section-shell" id="install" aria-labelledby="pwa-title">
+        <div class="pwa-bar">
+          <div class="pwa-copy">
+            <img class="pwa-app-icon" src="pwa/icon-192.png" width="44" height="44" alt="" />
+            <div>
+              <p class="pwa-kicker">APP ACCESS</p>
+              <h2 id="pwa-title">Keep the guide handy.</h2>
+              <p>Install it from your browser and read the guide even when you’re offline.</p>
+              <p id="pwa-status" role="status" tabindex="-1"></p>
+            </div>
+          </div>
+          <button class="button button-small" id="install-native" type="button" hidden>Install Workflow Guide</button>
+          <details id="install-guide">
+            <summary>How to install on your device</summary>
+            <ul class="pwa-instructions">
+              <li><strong>Edge or Chrome:</strong> Use the install icon in the address bar or look for an install option in the browser menu.</li>
+              <li><strong>Android:</strong> In Chrome’s menu, choose <em>Install app</em> or <em>Add to Home screen</em>.</li>
+              <li><strong>iPhone or iPad:</strong> In Safari, use <em>Share → Add to Home Screen</em>. Turn on <em>Open as Web App</em> if offered.</li>
+              <li><strong>Mac:</strong> In Safari, choose <em>File → Add to Dock</em> when available.</li>
+            </ul>
+            <p class="pwa-instructions-note">The guide, FAQ search, and PowerPoint are saved locally. ChatGPT and other external links still need internet.</p>
+          </details>
+          <div class="pwa-update" id="pwa-update" hidden>
+            <p>A new guide is ready. Updating reloads this page, so copy any unfinished question first.</p>
+            <button class="button button-small" id="pwa-update-button" type="button">Update and reload</button>
+            <p id="pwa-update-status" role="status"></p>
+          </div>
         </div>
       </section>
 

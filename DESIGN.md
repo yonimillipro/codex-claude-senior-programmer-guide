@@ -110,6 +110,11 @@ variant, not a change to all buttons or cards.
   actions are at least 44px where practical. Reduced motion removes panel animation.
 - Scrollbar ownership: `chat.css` supplies one document-wide baseline with inherited
   semantic thumb/track/hover/active colors and a forced-colors path.
+- PWA access: the hero links to an in-flow app section below the roles. It uses the
+  guide’s semantic surfaces and existing buttons, a native instructions disclosure,
+  and text for offline readiness and updates. The OS icon keeps the existing blue
+  code mark, with a separately padded maskable variant. No automatic install prompt
+  or reload interrupts learning; official browser controls remain the fallback.
 
 ## Do's and Don'ts
 
