@@ -1,5 +1,5 @@
 export const GUIDE_CONTEXT = `
-This is the Senior Developer Workflow Guide (Version 2, content dated October 10, 2026).
+This is the Senior Developer Workflow Guide (website Version 3, checked November 20, 2026).
 This reference is a dated learning resource, not a live model catalog or a claim that one provider always wins.
 
 ROLES (#roles)
@@ -7,7 +7,7 @@ Claude Code is assigned solution architecture, investigation, planning and indep
 Codex is assigned implementation, tests, verification, Git and PR preparation.
 The human owns requirements, sensitive decisions, findings triage, merge and release.
 These are suggested responsibilities, not technical limitations of either product. Either coding tool can plan, build and review.
-Claude Code does not run as a built-in model inside Codex. They can work in the same Git repository through separate tools and an explicit handoff. Keep Claude's repository instructions in CLAUDE.md and Codex's in AGENTS.md, with shared contracts kept consistent. Never let parallel agents edit the same files without explicit ownership. Prefer separate worktrees and one integration owner.
+Claude Code does not run as a built-in model inside Codex. They can work in the same Git repository through separate tools and an explicit handoff. Codex discovers scoped AGENTS.md guidance; supported Claude Code configurations can fall back to AGENTS.md when no applicable CLAUDE.md exists, or explicitly import it with @AGENTS.md in CLAUDE.md. Inspect loaded instructions and keep shared contracts consistent. Never let parallel agents edit the same files without explicit ownership. Prefer separate worktrees and one integration owner.
 
 12-PHASE WORKFLOW (#workflow)
 1. Claude: Define requirements — goals, users, constraints, assumptions, non-goals, acceptance criteria.
@@ -31,8 +31,8 @@ Debugging prompt: provide observed vs expected behavior, exact reproduction, log
 Independent review prompt: read approved requirements and the diff separately; cite file evidence, consequence, severity and confidence; distinguish confirmed problems from unverified concerns. Do not automatically implement reviewer suggestions.
 
 MODELS (#models and #mastery)
-The page has a model catalog and playbooks for ChatGPT Astra, ChatGPT Sol mode, Claude Fable 5 and Claude Opus 5. Distinguish model versions from chat products, coding-agent tools and reasoning-effort controls. Do not equate a ChatGPT subscription with an API key for a website. Select models using task-specific evaluations, quality, latency, cost, availability and risk—not an unsupported universal ranking.
-Model names, prices, access and retirement dates change. You have no live web access in this chat. For current availability, direct readers to https://developers.openai.com/api/docs/models and https://platform.claude.com/docs/en/about-claude/models/overview rather than inventing a current specification.
+The page covers GPT-6.2 Sol and Astra, GPT-6.1 Terra, GPT-6 Luna, Claude Fable 5.2, Opus 5.5, Sonnet 5.5 and Haiku 5.5. Suggested roles and task routing are editorial starting points, not benchmark results. Distinguish model versions, products, tools and effort controls. The senior-practice section has explicit handoff templates, instruction-loading notes, worktree boundaries, evaluations and release gates. The ai-foundations section covers context, retrieval, skills/MCP, hallucinations, permissions and privacy. API credit eligibility must be checked in current official terms, not inferred from an owner's subscription.
+Model names, prices, access and retirement dates change. You have no live web access in this chat. For current availability, direct readers to https://developers.openai.com/api/docs/models and https://platform.claude.com/docs/en/models/overview rather than inventing a current specification.
 
 VERIFICATION (#verification)
 For web apps test the actual page, key journeys, mobile/desktop, keyboard/focus, themes, invalid input, permission failures, offline/loading and browser errors. Build success or HTTP 200 alone is not a runtime test.
@@ -41,7 +41,7 @@ Keep evidence: exact command/results, screenshots where useful, known gaps, comm
 
 WEBSITE
 The header theme control cycles System / Light / Dark and remembers the choice. The Three.js + GSAP hero has Pause/Resume and honors reduced motion. The workflow can be filtered by owner. Model mastery has build/debug/review prompts that can be copied. Verification checklist selections are saved in the browser.
-The download at presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx is the blue, 58-slide companion PowerPoint.
+The download at presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx is the older blue, 58-slide October Version 2 PowerPoint. It was not updated for the November website edition. The website is installable, with versioned offline caching; external AI needs internet. The free 24-answer helper searches locally and does not call this dormant backend.
 `;
 
 export const ASSISTANT_INSTRUCTIONS = `You are the Guide Assistant on the Senior Developer Workflow Guide website.

@@ -233,20 +233,26 @@ fix → verification → remaining uncertainty.`,
 const modelViews = {
   openai: {
     title: "OpenAI’s current developer family",
-    summary: "Start with GPT-6.1 Sol, escalate to Astra when ambiguity or risk is high, and route bounded volume to Luna.",
-    command: "codex --model gpt-6.1-sol",
+    summary: "Suggested starting point: GPT-6.2 Sol for routine implementation; evaluate GPT-6.2 Astra when the task spans systems or the first approach fails.",
+    command: "codex --model gpt-6.2-sol",
     models: [
       {
-        name: "GPT-6 Astra",
-        role: "Highest capability",
-        description: "For demanding, ambiguous reasoning, difficult coding, architecture, and high-risk final review.",
-        use: "Use when the cost of a wrong answer exceeds the cost of a deeper run.",
+        name: "GPT-6.2 Astra",
+        role: "Demanding projects",
+        description: "For difficult reasoning, cross-codebase changes and sustained engineering work. Exact API ID: gpt-6.2-astra.",
+        use: "Text/image input → text. 1.05M context, up to 128K output. API effort none is rejected; tool calls use Responses.",
       },
       {
-        name: "GPT-6.1 Sol",
-        role: "Developer default",
-        description: "Near-Astra capability at lower cost for repository implementation, long-running agent work, and verification.",
-        use: "Use for most serious feature, refactor, migration, and debugging tasks.",
+        name: "GPT-6.2 Sol",
+        role: "Everyday default",
+        description: "For ordinary coding and agent workflows at lower API cost than Astra. Exact API ID: gpt-6.2-sol.",
+        use: "Text/image input → text. 1.05M context, up to 128K output. Increase effort for a measured need, not by habit.",
+      },
+      {
+        name: "GPT-6.1 Terra",
+        role: "Visual + computer tasks",
+        description: "For visual understanding, application-screen work and clear writing. Exact API ID: gpt-6.1-terra.",
+        use: "Evaluate it for screenshot-led UI checks with appropriate browser tools. API effort none is supported; model ability alone grants no tool access.",
       },
       {
         name: "GPT-6 Luna",
@@ -255,54 +261,54 @@ const modelViews = {
         use: "Use only after the task is bounded and the acceptance test is clear.",
       },
     ],
-    foot: "Shared developer capabilities include large context, structured outputs, tool use, computer/file workflows, persisted reasoning, compaction, and reasoning controls. Check the exact model page before relying on a feature.",
+    foot: "Checked November 20, 2026. GPT-6.2 launched November 17 in Work, Codex and the API; it is not a claim about ordinary Chat’s picker. Context and output limits are ceilings, not suggested prompt sizes. Cost depends on input, output, cache behavior, tools, retries and processing tier. Use the official model pages linked below.",
   },
   claude: {
     title: "Claude’s current developer family",
-    summary: "Use Sonnet 5.5 for daily coding, Opus 5.5 for the hardest general work, and Fable 5.1 only when access and evaluations justify it.",
-    command: "claude --model sonnet",
+    summary: "Anthropic suggests Opus 5.5 for most workloads. For this workflow, also evaluate Sonnet 5.5 for a faster independent review; escalate to Fable 5.2 when evidence justifies it.",
+    command: "claude --model claude-opus-5-5",
     models: [
       {
         name: "Claude Sonnet 5.5",
-        role: "Daily default",
-        description: "Strongest at well-scoped everyday work, bug fixing, and polished documents, slides, and spreadsheets.",
-        use: "Use for normal Claude Code implementation, investigation, and review loops.",
+        role: "Speed / capability balance",
+        description: "For everyday coding, analysis and tool workflows. Exact API ID: claude-sonnet-5-5.",
+        use: "1M context, up to 128K output; adaptive thinking, high default effort. Trial it on a bounded review before scaling.",
       },
       {
         name: "Claude Opus 5.5",
-        role: "Complex work",
-        description: "Anthropic’s leading general model for difficult coding, architecture, deep analysis, and review.",
-        use: "Escalate selectively when Sonnet cannot close the task with evidence.",
+        role: "General Claude starting point",
+        description: "For extended coding and knowledge work. Exact API ID: claude-opus-5-5.",
+        use: "1M context, up to 128K output; always-on adaptive thinking, medium default effort.",
       },
       {
-        name: "Claude Fable 5.1",
-        role: "Frontier coding",
-        description: "A frontier option for coding and knowledge work where account access enables it.",
-        use: "Benchmark it against Opus on your own repository before making it the default.",
+        name: "Claude Fable 5.2",
+        role: "Hard, long-horizon work",
+        description: "For demanding reasoning and extended agent tasks. Exact API ID: claude-fable-5-2. Released November 9, 2026.",
+        use: "1M context, up to 128K output; always-on adaptive thinking, high default effort. Review its model-specific data-retention rules before sending sensitive material.",
       },
       {
         name: "Claude Haiku 5.5",
         role: "Fast + high volume",
-        description: "Released October 7, 2026 for latency-sensitive classification, extraction, routing, and bounded agent tasks.",
-        use: "Start from its medium effort default and evaluate correctness, latency, and retries. Full API model ID: claude-haiku-5-5.",
+        description: "For fast classification, extraction, routing and bounded subagent work. Exact API ID: claude-haiku-5-5.",
+        use: "Adaptive thinking, medium default effort. Evaluate extraction accuracy and retry costs instead of treating it as a cheaper drop-in reviewer.",
       },
       {
-        name: "Claude Mythos 5.1",
-        role: "Restricted research",
-        description: "The same underlying model as Fable with different safeguards for trusted-access programs and Claude Security.",
-        use: "It is not a general Claude Code default.",
+        name: "Claude Mythos 5.2",
+        role: "Verified access only",
+        description: "A specialized, access-restricted option described alongside Fable 5.2 in Anthropic’s docs.",
+        use: "Not an assumption about your account or a default for this guide.",
       },
     ],
-    foot: "Claude Code accepts model aliases such as sonnet, opus, haiku, and fable, plus full model IDs. Check the resolved version rather than assuming an alias always maps to the newest model. Run Claude Code and Codex as separate sessions with one writer per worktree.",
+    foot: "Checked November 20, 2026. Model aliases can resolve differently across providers; inspect /model and record the actual ID. Product, provider, plan and organization settings control access. The role split in this guide is an operating convention, not a limitation of either coding tool.",
   },
 };
 
 const comparisonRows = [
-  ["End-to-end repository change", "Codex + GPT-6.1 Sol", "Integrated execution, tests, runtime checks, and Git handoff"],
+  ["End-to-end repository change", "Start by evaluating Codex + GPT-6.2 Sol", "Use the actual repository, acceptance tests and a working runtime"],
   ["Hard architecture or ambiguous failure", "Test Astra and Opus / Fable", "Domain-specific evaluation matters more than brand"],
   ["Focused bug fix", "Sol or Sonnet 5.5", "Reproduction quality and tool evidence decide the winner"],
   ["Independent code review", "Claude Sonnet 5.5", "Useful separation from a Codex implementation pass"],
-  ["Cross-app or browser workflow", "Codex", "Computer and browser integration favor the Codex surface"],
+  ["Cross-app or visual workflow", "Terra / Astra in a tool-enabled surface", "Check tool availability, permitted actions and actual screen evidence"],
   ["High-volume automation", "GPT-6 Luna", "Optimize for cost, latency, retry rate, and intervention"],
   ["Deepest final review", "Astra + Opus 5.5", "Dual review makes disagreement visible before release"],
 ];
@@ -332,11 +338,11 @@ function renderModelView(name) {
       </div>
       <div class="comparison-table-wrap">
         <table class="comparison-table">
-          <thead><tr><th>Developer job</th><th>Better default</th><th>Decision reason</th></tr></thead>
+          <thead><tr><th>Developer job</th><th>Candidate to evaluate</th><th>Decision reason</th></tr></thead>
           <tbody>${comparisonRows.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody>
         </table>
       </div>
-      <p class="model-foot"><strong>Recommended stack:</strong> Codex with GPT-6.1 Sol for implementation, Claude Sonnet 5.5 for an independent read-only review, and a human owner for scope, secrets, merge, deployment, and rollback.</p>`;
+      <p class="model-foot"><strong>Suggested starting configuration, not a benchmark:</strong> Codex + GPT-6.2 Sol implements; Claude Code + Sonnet 5.5 or Opus 5.5 reviews independently. Use Astra or Fable for genuinely hard tasks after evaluation. You still own scope, secrets, merge, deployment, and rollback.</p>`;
     return;
   }
 

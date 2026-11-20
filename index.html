@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="motion.css" />
     <link rel="stylesheet" href="chat.css" />
     <link rel="stylesheet" href="pwa.css" />
+    <link rel="stylesheet" href="practice.css" />
     <script src="pwa.js" defer></script>
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   </head>
@@ -112,7 +113,7 @@
     <main>
       <section class="hero section-shell" id="roles">
         <div class="hero-copy reveal">
-          <p class="release-badge">Version 2 · Developer model playbooks</p>
+          <p class="release-badge">Version 3 · Checked November 20, 2026</p>
           <h1>Senior Developer<br />Workflow Guide</h1>
           <p>Choose the right current model. Build in small slices.<br />Verify with evidence. Review independently.</p>
           <a class="button" href="#models">
@@ -120,6 +121,7 @@
             <svg aria-hidden="true"><use href="#icon-chevron"></use></svg>
           </a>
           <a class="pwa-jump" href="#install">Install app</a>
+          <a class="pwa-jump" href="#update">What’s new</a>
         </div>
         <div class="operating-model operating-model--motion reveal" role="group" aria-label="Combined operating model">
           <div class="collaboration-stage" id="collaboration-stage" data-motion="fallback">
@@ -229,11 +231,27 @@
         </div>
       </section>
 
+      <section class="practice-section section-shell section-rule" id="update" aria-labelledby="update-heading">
+        <div class="section-heading">
+          <div><span class="mastery-eyebrow">NOVEMBER 20, 2026 · EDITORIAL UPDATE</span><h2 id="update-heading">New models.<br />Same engineering discipline.</h2><p>Use stronger models to close real tasks—not to remove your evidence, security, or release gates.</p></div>
+          <p class="freshness-note">This is a checked snapshot, not a live model feed. Read the linked official docs before relying on availability, pricing, or limits. Offline readers see their saved edition.</p>
+        </div>
+        <nav class="practice-jump" aria-label="November update topics">
+          <a href="#models">Model routing</a><a href="#mastery">Model playbooks</a><a href="#senior-practice">Your two-tool workflow</a><a href="#ai-foundations">AI foundations &amp; safety</a><a href="#source-register">Source register</a>
+        </nav>
+        <div class="practice-grid">
+          <article><span class="mastery-eyebrow">OPENAI</span><h3>GPT-6.2 is here</h3><p>Sol is the everyday starting point; Astra targets harder projects. Both launched in Work, Codex and the API on November 17. Terra remains a separate visual/computer-use option.</p><a href="https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol" target="_blank" rel="noreferrer">Official GPT-6.2 release ↗</a></article>
+          <article><span class="mastery-eyebrow">ANTHROPIC</span><h3>Update the exact Claude version</h3><p>Fable 5.2 is the new demanding-reasoning option. Opus 5.5 is Anthropic’s general starting recommendation; Sonnet and Haiku 5.5 cover faster work. An alias is not a pinned version.</p><a href="https://platform.claude.com/docs/en/models/overview" target="_blank" rel="noreferrer">Official Claude catalog ↗</a></article>
+          <article><span class="mastery-eyebrow">YOUR OPERATING MODEL</span><h3>One contract. One integration owner.</h3><p>Keep Claude Code for investigation and independent review, Codex for implementation and verification, and yourself for decisions and release. Either tool can perform the other role; keep review evidence independent.</p><a href="#senior-practice">Use the handoff templates →</a></article>
+        </div>
+        <p class="practice-callout">The website is now Version 3. The downloadable 58-slide PowerPoint remains the October Version 2 edition and is labelled accordingly. The free FAQ helper stays local; this update does not enable paid AI requests.</p>
+      </section>
+
       <section class="model-guide section-shell section-rule" id="models">
         <div class="section-heading reveal">
           <div>
             <h2>Choose the model<br />after you choose the job.</h2>
-            <p>Current developer guidance for ChatGPT Work, Codex, Claude Code, and their APIs — updated October 2026.</p>
+            <p>Developer guidance for ChatGPT Work, Codex, Claude Code, and their APIs — verified November 20, 2026.</p>
           </div>
           <p class="freshness-note">Availability varies by product, plan, account, and region. Pin exact model IDs for reproducible benchmarks.</p>
         </div>
@@ -263,16 +281,16 @@
         </div>
 
         <div class="routing-strip reveal" aria-label="Recommended model routing">
-          <article><strong>Default</strong><span>GPT-6.1 Sol in Codex for serious repository implementation.</span></article>
-          <article><strong>Escalate</strong><span>GPT-6 Astra or Claude Opus 5.5 for the hardest architecture, debugging, and review.</span></article>
+          <article><strong>Default</strong><span>Evaluate GPT-6.2 Sol in Codex for routine implementation.</span></article>
+          <article><strong>Escalate</strong><span>Evaluate GPT-6.2 Astra, Opus 5.5 or Fable 5.2 for hard cross-system work.</span></article>
           <article><strong>Scale</strong><span>GPT-6 Luna for bounded, repeatable, latency-sensitive, or high-volume work.</span></article>
-          <article><strong>Review</strong><span>Claude Sonnet 5.5 as an independent read-only reviewer before the human gate.</span></article>
+          <article><strong>Review</strong><span>Claude Code with Sonnet 5.5 or Opus 5.5, independent evidence, then a human gate.</span></article>
         </div>
 
         <div class="migration-note reveal">
           <div>
             <h3>Migration watchlist</h3>
-            <p>GPT-5.5 access in ChatGPT Work and Codex retires October 14, 2026. Claude Sonnet 4.5 is deprecated for the Claude API and is scheduled to retire November 30, 2026. API and product lifecycles can differ.</p>
+            <p>GPT-5.5 retired from ChatGPT-authenticated Work and Codex on October 14, 2026; this was not an API retirement. Claude Sonnet 4.5’s API retirement is scheduled for November 30, 2026. Audit saved model IDs, CI jobs and aliases before upgrading. Re-run your own evals; a newer name is not proof of compatibility.</p>
           </div>
           <a class="button button-small" href="#prompts">Use the prompt playbooks</a>
         </div>
@@ -280,9 +298,9 @@
         <div class="model-sources reveal">
           <span>Official sources:</span>
           <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer">OpenAI models</a>
-          <a href="https://developers.openai.com/api/docs/guides/latest-model" target="_blank" rel="noreferrer">GPT-6 guide</a>
+          <a href="https://developers.openai.com/api/docs/guides/latest-model" target="_blank" rel="noreferrer">GPT-6.2 guide</a>
           <a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">ChatGPT Work models</a>
-          <a href="https://www.anthropic.com/transparency" target="_blank" rel="noreferrer">Claude model report</a>
+          <a href="https://platform.claude.com/docs/en/models/overview" target="_blank" rel="noreferrer">Claude model catalog</a>
           <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations" target="_blank" rel="noreferrer">Claude deprecations</a>
           <a href="https://code.claude.com/docs/en/cli-usage" target="_blank" rel="noreferrer">Claude Code CLI</a>
         </div>
@@ -291,26 +309,26 @@
       <section class="mastery section-shell section-rule" id="mastery" aria-labelledby="mastery-heading">
         <div class="section-heading">
           <div>
-            <span class="mastery-eyebrow">MODEL MASTERY · VERSION 2</span>
+            <span class="mastery-eyebrow">MODEL MASTERY · VERSION 3</span>
             <h2 id="mastery-heading">Get more from<br />every model.</h2>
-            <p>A developer’s practical guide to ChatGPT Astra, Sol mode, Claude Fable 5, and Claude Opus 5.</p>
+            <p>Practical playbooks for GPT-6.2 Astra, GPT-6.2 Sol, Claude Fable 5.2, and Claude Opus 5.5.</p>
           </div>
-          <p class="freshness-note">Guidance checked October 10, 2026. The playbooks below cover the named models; the model catalog above includes newer versions.</p>
+          <p class="freshness-note">Checked November 20, 2026. Advice below is a starting hypothesis to evaluate, not a vendor-neutral benchmark or a promise of account access.</p>
         </div>
 
         <div class="mastery-start">
           <h3>Start with the right workspace</h3>
-          <p>In ChatGPT Work or Codex, choose an available model using the control beneath the composer. Open Advanced when you need a specific model or effort. Sol is available in Work and Codex, rather than ordinary Chat. For Claude, choose the exact model where your account supports it; check the selected version before reusing a prompt. Availability and controls vary by client and account.</p>
+          <p>GPT-6.2 Astra and Sol are available in Work and Codex, not a guarantee about ordinary Chat’s model menu. Use the app picker or <code>/model</code> in the Codex CLI; check Advanced when a Power slider is shown. In Claude Code, inspect <code>/model</code> and record the resolved ID. A Claude app subscription, a CLI session and an API integration can have different access, billing and permissions.</p>
           <a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">Read the official ChatGPT model controls ↗</a>
-          <p class="mastery-download"><a href="presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx" download="Codex and Claude_Senior_Programmer_Guide_Updated_Version_2.pptx">Download the matching Version 2 PowerPoint · 58 slides ↓</a></p>
-          <p class="mastery-download">Latest catalog addition: <a href="https://platform.claude.com/docs/en/models/haiku-5-5/overview" target="_blank" rel="noreferrer">Claude Haiku 5.5</a> for fast, high-volume tasks. The model explorer above includes it separately from the four playbooks.</p>
+          <p class="mastery-download"><a href="presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx" download="Codex and Claude_Senior_Programmer_Guide_Updated_Version_2.pptx">Download the October Version 2 PowerPoint · 58 slides ↓</a> — retained as an older companion, not updated for this November website edition.</p>
+          <p class="mastery-download">Also compare GPT-6.1 Terra for visual tasks and Claude Sonnet / Haiku 5.5 for faster bounded work in the model catalog above.</p>
         </div>
 
         <div class="mastery-tabs" role="tablist" aria-label="Model mastery playbooks">
-          <button type="button" id="mastery-tab-astra" role="tab" aria-controls="mastery-panel" aria-selected="true" data-mastery="astra">ChatGPT Astra</button>
-          <button type="button" id="mastery-tab-sol" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="sol">ChatGPT Sol</button>
-          <button type="button" id="mastery-tab-fable" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="fable">Claude Fable 5</button>
-          <button type="button" id="mastery-tab-opus" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="opus">Claude Opus 5</button>
+          <button type="button" id="mastery-tab-astra" role="tab" aria-controls="mastery-panel" aria-selected="true" data-mastery="astra">GPT-6.2 Astra</button>
+          <button type="button" id="mastery-tab-sol" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="sol">GPT-6.2 Sol</button>
+          <button type="button" id="mastery-tab-fable" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="fable">Claude Fable 5.2</button>
+          <button type="button" id="mastery-tab-opus" role="tab" aria-controls="mastery-panel" aria-selected="false" tabindex="-1" data-mastery="opus">Claude Opus 5.5</button>
         </div>
         <article class="mastery-panel" id="mastery-panel" role="tabpanel" aria-labelledby="mastery-tab-astra" tabindex="0">
           <p>Select a model playbook to explore its workflow and prompts.</p>
@@ -449,6 +467,49 @@
         </article>
       </section>
 
+      <section class="practice-section section-shell section-rule" id="senior-practice" aria-labelledby="practice-heading">
+        <div class="section-heading"><div><span class="mastery-eyebrow">APPLY THE TWELVE PHASES</span><h2 id="practice-heading">Make the handoff<br />as good as the code.</h2><p>A practical operating agreement for Codex + Claude Code. These are engineering recommendations to adapt to your repository, not vendor-imposed roles.</p></div></div>
+        <div class="practice-grid">
+          <article><h3>Claude → Codex</h3><p>Supply the accepted requirements, non-goals, interfaces, relevant paths, failure cases, acceptance tests, allowed actions and the decisions still needing your approval. Do not hand over only a chat summary.</p></article>
+          <article><h3>Codex → Claude</h3><p>Supply the base and feature commits, complete diff, behavior contract, changed paths, commands and results, runtime evidence, and untested areas. The review is read-only unless you explicitly authorize a fix.</p></article>
+          <article><h3>Both → you</h3><p>Triage findings as confirmed, needs reproduction, deferred or false positive. Review the combined diff. Approve irreversible actions separately. Record rollback steps and who will observe the release.</p></article>
+        </div>
+        <div class="practice-disclosures">
+          <details><summary>Share repository rules without making them conflict</summary><div>
+            <p>Codex loads AGENTS.md guidance by scope. Keep it concise: how to run checks, project boundaries, dangerous operations, and real conventions—not an essay about every possible task.</p>
+            <p>Current Claude Code can read AGENTS.md as a fallback when no applicable CLAUDE.md exists; behavior depends on version and Project instructions settings. If you keep both, a CLAUDE.md with an explicit <code>@AGENTS.md</code> import is a documented way to share the base. Add only Claude-specific differences afterward. Inspect what actually loaded.</p>
+            <p>Keep secrets out of both files. Durable project decisions belong in maintained docs; temporary task notes should record current work, not silently become policy.</p>
+            <p><a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md" target="_blank" rel="noreferrer">Codex instruction discovery ↗</a> · <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noreferrer">Claude Code instruction loading ↗</a></p>
+          </div></details>
+          <details><summary>Use parallel agents only for genuinely independent work</summary><div>
+            <p>Start serially. Split a substantial task only when boundaries and integration costs are clear. Give each worker a deliverable, file/worktree ownership, constraints, and a verification command. Never infer permission for extra agents from “finish the task.”</p>
+            <p>A worktree isolates files, not production databases, deployments, ports or shared test accounts. Use isolated fixtures and services too. One owner integrates, reviews and retests the combined result; several passing subagent reports do not prove integration.</p>
+          </div></details>
+          <details><summary>Keep long tasks recoverable</summary><div>
+            <p>Record the goal, accepted decisions, base commit, current diff, completed checks, failed checks and next step in a short task note. Context compaction is not guaranteed recall. After a handoff or restart, re-read the contract and inspect the actual working tree before resuming.</p>
+            <p>Give an outcome and constraints without micromanaging every file read. Stop for missing authority or risky ambiguity; diagnose ordinary tool failures without disguising them as success.</p>
+          </div></details>
+          <details><summary>Change API models as a migration, not a search-and-replace</summary><div>
+            <p>For GPT-6.2, <code>reasoning.effort: none</code> is invalid; tool calling uses Responses. Its API conversation-prefix behavior changed. Preserve earlier input when required, and check the guidance on placing reusable instructions in a leading developer message.</p>
+            <p>Fable 5.2 has model-specific prefix checks, always-on adaptive thinking, sampling/tool-choice restrictions, and a 30-day retention requirement unless Anthropic expressly authorizes an exception. Do not copy parameters or a zero-retention assumption from another model.</p>
+            <p>Validate SDK support, payloads, streaming cancellation, schema validation, error states and tool permissions. Run a fixed evaluation set in an isolated environment. Do not enable fallback models or paid retries without a deliberate billing and privacy decision.</p>
+            <p><a href="https://developers.openai.com/api/docs/guides/latest-model" target="_blank" rel="noreferrer">GPT-6.2 migration ↗</a> · <a href="https://platform.claude.com/docs/en/models/fable-5-2/overview" target="_blank" rel="noreferrer">Fable 5.2 constraints ↗</a></p>
+          </div></details>
+          <details><summary>Evaluate a model on your work before you standardize it</summary><div>
+            <p>Use a small fixed set: one feature, one reproducible bug, one review with known defects, one tool failure and one security/permission case. Keep the repository version, prompt, fixtures and tool access comparable.</p>
+            <p>Record exact model, surface, effort, date, acceptance-test results, elapsed time, cost where available, retries and human corrections. Compare verified outcomes, not response confidence, length or self-reported scores. Re-evaluate after a model or agent-harness upgrade.</p>
+          </div></details>
+          <details><summary>Release with evidence and a way back</summary><div>
+            <p>Link each acceptance criterion to a test or runtime observation. Use passed, failed, not run, or blocked—not “looks good.” Include authorization failures, invalid input, accessibility, mobile layouts and offline behavior where relevant.</p>
+            <p>Before merge: review the final diff and dependency changes, scan for leaked credentials, approve migrations explicitly, and name a rollback owner. After deploy: confirm the intended commit, smoke-test the public entry point and inspect errors. For this PWA, verify a fresh offline load and the update flow as well.</p>
+          </div></details>
+        </div>
+        <h3 class="practice-subhead">Copy an explicit handoff</h3>
+        <p>Replace the brackets. These prompts do not execute code, call a model or grant permissions.</p>
+        <div id="handoff-templates"></div>
+        <noscript><p>Use the three handoff descriptions above; JavaScript enables the full template copier.</p></noscript>
+      </section>
+
       <section class="prompts section-shell section-rule" id="prompts">
         <div class="section-heading reveal">
           <div>
@@ -507,6 +568,43 @@
         </div>
       </section>
 
+      <section class="practice-section section-shell section-rule" id="ai-foundations" aria-labelledby="ai-heading">
+        <div class="section-heading"><div><span class="mastery-eyebrow">AI LITERACY FOR DEVELOPERS</span><h2 id="ai-heading">Know what the system<br />is—and what it isn’t.</h2><p>Use these distinctions when building AI features or supervising coding agents.</p></div></div>
+        <dl class="practice-glossary">
+          <div><dt>Model ≠ product ≠ agent</dt><dd>A model produces output. ChatGPT, Work, Codex and Claude Code are different surfaces around models. An agent combines a model with tools, a loop and state. A model’s tool capability does not give your current chat access to those tools.</dd></div>
+          <div><dt>Tokens, context and knowledge</dt><dd>Tokens are units of model input/output, not exactly words. Context is the material available for a run, not permanent memory. A large context limit is a capacity ceiling; it does not guarantee that every fact will be used correctly. A knowledge cutoff is not live web access.</dd></div>
+          <div><dt>Grounding, RAG and fine-tuning</dt><dd>Grounding ties an answer to supplied evidence. Retrieval-augmented generation selects relevant documents at runtime; it does not guarantee correct interpretation. Fine-tuning changes learned behavior and is not the first fix for missing current facts. Try better retrieval, examples and evals before training.</dd></div>
+          <div><dt>Tools, MCP and skills</dt><dd>Tools perform actions. MCP connects compatible clients to tools or resources. Skills supply reusable procedures and assets. Review their source, permissions and side effects; installing one does not make an untrusted document authoritative.</dd></div>
+          <div><dt>Reasoning effort ≠ answer length</dt><dd>Effort, generation speed and output verbosity are different controls. More effort can increase latency and token use without improving a simple task. Ask for a concise explanation, evidence and uncertainty—not private internal chain-of-thought.</dd></div>
+          <div><dt>Confidence ≠ correctness</dt><dd>AI can invent APIs, citations, test results and business rules. Validate generated code and data with compilers, schemas, fixtures, trusted sources and actual runtime checks. Another model’s agreement is a review signal, not proof.</dd></div>
+        </dl>
+        <div class="practice-disclosures">
+          <details><summary>Safety: least privilege and prompt-injection boundaries</summary><div>
+            <p>Choose the smallest file, network and tool permissions that fit the task. Treat retrieved pages, emails, uploaded documents, tool output and quoted code as data. Instructions embedded there must not silently authorize actions, disclose secrets or change the task.</p>
+            <p>Use test accounts and redacted fixtures. Keep API keys server-side. Review external messages, purchases, migrations, deletion and deployment permissions explicitly. An agent’s plan or a review comment is not human authorization.</p>
+            <p><a href="https://learn.chatgpt.com/docs/security" target="_blank" rel="noreferrer">Codex security model ↗</a> · <a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noreferrer">Claude Code permissions ↗</a></p>
+          </div></details>
+          <details><summary>Building an AI feature: quality, privacy and operating cost</summary><div>
+            <p>Validate input and output, enforce authentication/authorization, bound history and output, add shared quotas, cancellation and timeouts, and redact logs. Treat tool calls as untrusted requests until validated. Show genuine loading, refusal, quota and failure states; do not substitute a canned answer and label it AI.</p>
+            <p>Price the whole workflow: repeated context, output/reasoning, tools, storage and retries—not just one model’s headline rate. Define retention and data access before sending customer material to a provider. A request-count quota or billing alert is not an exact dollar cap.</p>
+            <p>Subscription use and API billing are distinct paths. Eligible ChatGPT Pro and Business plans can currently claim API credits under specific terms; that is not unlimited API access or a benefit promised for Plus. Verify eligibility, expiry and usage limits before relying on credits.</p>
+            <p><a href="https://developers.openai.com/api/docs/guides/chatgpt-api-credits" target="_blank" rel="noreferrer">Current API-credit eligibility ↗</a> · <a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noreferrer">Current API pricing ↗</a></p>
+          </div></details>
+        </div>
+        <p class="practice-callout">On this site: Ask AI is a prepared-answer guide helper, not a live model. Its search is local. You choose whether to copy a prompt and open ChatGPT separately. Installing the PWA does not make external AI available offline or share the owner’s account.</p>
+      </section>
+
+      <section class="practice-section section-shell section-rule" id="source-register" aria-labelledby="sources-heading">
+        <div class="section-heading"><div><span class="mastery-eyebrow">MAINTENANCE &amp; PROVENANCE</span><h2 id="sources-heading">Check the source.<br />Record the edition.</h2><p>Official documentation checked November 20, 2026. Task-routing recommendations are editorial judgment, not measured cross-vendor rankings.</p></div></div>
+        <ul class="practice-sources">
+          <li><a href="https://developers.openai.com/api/docs/models/gpt-6.2-sol" target="_blank" rel="noreferrer">GPT-6.2 Sol specifications</a> · <a href="https://developers.openai.com/api/docs/models/gpt-6.2-astra" target="_blank" rel="noreferrer">GPT-6.2 Astra specifications</a> · <a href="https://developers.openai.com/api/docs/models/gpt-6.1-terra" target="_blank" rel="noreferrer">GPT-6.1 Terra specifications</a></li>
+          <li><a href="https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol" target="_blank" rel="noreferrer">GPT-6.2 release and product access</a> · <a href="https://developers.openai.com/api/docs/guides/latest-model" target="_blank" rel="noreferrer">GPT-6.2 migration and prompting</a></li>
+          <li><a href="https://platform.claude.com/docs/en/models/fable-5-2/overview" target="_blank" rel="noreferrer">Fable 5.2</a> · <a href="https://platform.claude.com/docs/en/models/opus-5-5/overview" target="_blank" rel="noreferrer">Opus 5.5</a> · <a href="https://platform.claude.com/docs/en/models/sonnet-5-5/overview" target="_blank" rel="noreferrer">Sonnet 5.5</a> · <a href="https://platform.claude.com/docs/en/models/haiku-5-5/overview" target="_blank" rel="noreferrer">Haiku 5.5</a></li>
+          <li><a href="https://code.claude.com/docs/en/model-config" target="_blank" rel="noreferrer">Claude Code model controls</a> · <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noreferrer">Claude Code best practices</a> · <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations" target="_blank" rel="noreferrer">Claude model lifecycle</a></li>
+        </ul>
+        <p>Before the next update, recheck exact IDs, account access, effort compatibility, privacy terms and retirement dates. Installed readers can use Update and reload when a new edition is ready. Website content, FAQ context and offline cache must move together; the October deck is a separate retained artifact.</p>
+      </section>
+
       <section class="closing section-shell">
         <div class="closing-flow reveal">
           <span>Define clearly</span><b>→</b><span>Work in small slices</span><b>→</b><span>Verify with evidence</span><b>→</b><span>Review independently</span><b>→</b><span>Merge intentionally</span>
@@ -516,7 +614,7 @@
     </main>
 
     <footer class="site-footer section-shell">
-      <span>Senior Developer Workflow Guide · Version 2 · October 10, 2026</span>
+      <span>Senior Developer Workflow Guide · Version 3 · November 20, 2026</span>
       <span>Claude defines and reviews. Codex implements and verifies. You own the release.</span>
     </footer>
 
@@ -570,5 +668,6 @@
     <script src="mastery.js"></script>
     <script type="module" src="chat.js"></script>
     <script type="module" src="motion.js"></script>
+    <script type="module" src="practice.js"></script>
   </body>
 </html>

@@ -4,7 +4,7 @@ import { readFile, access } from 'node:fs/promises';
 import { FAQS, searchGuide, buildChatGPTPrompt, GUIDE_URL } from '../guide-help-data.js';
 
 test('all prepared answers are browsable; each has a unique ID and valid guide destination', async () => {
-  assert.equal(FAQS.length, 16); assert.equal(new Set(FAQS.map(faq => faq.id)).size, 16);
+  assert.equal(FAQS.length, 24); assert.equal(new Set(FAQS.map(faq => faq.id)).size, 24);
   assert.deepEqual(searchGuide('  '), FAQS);
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   for (const faq of FAQS) {
@@ -30,7 +30,7 @@ test('unsupported questions and stop-word-only queries do not invent an answer',
 test('prompt includes the exact question, dated relevant references and no more than three FAQs', () => {
   const prompt = buildChatGPTPrompt('What should I test before release?');
   assert.ok(prompt.includes('My question:\nWhat should I test before release?'));
-  assert.ok(prompt.includes('HTTP 200')); assert.ok(prompt.includes('October 10, 2026'));
+  assert.ok(prompt.includes('HTTP 200')); assert.ok(prompt.includes('November 20, 2026'));
   assert.ok(prompt.includes(GUIDE_URL)); assert.ok(prompt.includes('#verification'));
   assert.ok((prompt.match(/Guide reference:/g) || []).length <= 3);
   assert.equal(buildChatGPTPrompt('  '), '');

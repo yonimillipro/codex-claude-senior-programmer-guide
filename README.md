@@ -2,27 +2,31 @@
 
 An interactive learning resource and companion PowerPoint for senior developers using Codex, Claude Code, ChatGPT/OpenAI models, and Claude models in one evidence-driven engineering workflow.
 
-Version 2 — updated October 10, 2026.
+Website Version 3 — checked November 20, 2026. The downloadable PowerPoint remains the October Version 2 edition.
 
-## Version 2 model mastery
+## Version 3: current models and practical engineering
 
-The landing page includes an interactive developer playbook for ChatGPT Astra,
-ChatGPT Sol mode (with exact Sol version guidance), Claude Fable 5, and Claude
-Opus 5. Each playbook includes model-specific tips, effort guidance, an exercise,
-official source links, and copyable build/debug/review prompt examples.
+The model explorer covers GPT-6.2 Sol and Astra, GPT-6.1 Terra, Luna, Claude
+Fable 5.2, Opus 5.5, Sonnet 5.5 and Haiku 5.5. Restricted Mythos access is
+labelled separately. Choose by measured task results, access, latency, cost and
+risk; the guide's role assignments are recommendations, not model limitations.
 
-`mastery.js` powers the playbooks; `mastery.css` provides responsive styling in
-both light and dark themes. The Claude playbooks intentionally cover the exact
-Fable 5 and Opus 5 versions requested, separately from the newer model catalog.
+`mastery.js` provides four current playbooks with build/debug/review examples,
+effort guidance, exercises and primary sources. New senior-practice sections
+cover shared instructions, isolated parallel work, durable checkpoints, API
+migration pitfalls, task evaluations and release evidence. Three copyable handoff
+contracts make the Claude review / Codex implementation workflow concrete.
+
+AI foundations explain models versus products versus agents, tokens/context,
+retrieval, tools/MCP/skills, effort and verification. Safety guidance covers
+untrusted content, permissions, secrets, data retention and bounded AI features.
+The source register records the review date and maintenance checklist; this is
+a dated editorial guide, not a live model availability feed.
 
 Production: https://codex-claude-senior-programmer-guid.vercel.app/#mastery
 
-The matching blue PowerPoint now contains 58 editable slides. The Version 2
-addition covers platform/model controls, exact versus newer versions, four
-model playbooks, three developer prompt scenarios, and a practice/evaluation
-loop. Relevant slide notes contain official sources and full prompt examples.
-The current Claude catalog also includes Haiku 5.5, released October 7, 2026,
-with its official overview linked on the page.
+The blue PowerPoint contains 58 editable slides from October. It covers roles,
+workflow and verification, but has not received this November model update.
 
 [Download the Version 2 PowerPoint](presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx)
 
@@ -67,13 +71,13 @@ There is no runtime CDN dependency, texture download, or build step.
 ## Free guide helper
 
 The fixed **Ask AI** pill now opens a clearly labelled **Guide helper**, not a
-live chatbot. It searches 16 prepared answers about roles, the workflow,
+live chatbot. It searches 24 prepared answers about roles, the workflow,
 prompting, debugging, review, verification, repository guidance, parallel work,
 model playbooks, the PowerPoint, themes, animation, costs and privacy. Native
 disclosures expand each answer and link to its guide section or deck download.
 
 Search is immediate, local, case-insensitive and IME-safe, with common keyword
-aliases, a clear button and an honest no-results state. All 16 answers are
+aliases, a clear button and an honest no-results state. All 24 answers are
 browsable without a query. The question and current results stay in page memory,
 not local storage, URLs, analytics or a database. The helper makes **no calls to
 `/api/chat` or an AI provider**, including connection/readiness checks. It needs
@@ -159,7 +163,10 @@ For an initial API trial, consider $5 of prepaid credit with auto-reload **off**
 and review provider usage each day. This is a starting balance, not $5 per day
 or an instantaneous hard cutoff: billing processing can lag. See
 [OpenAI's prepaid billing guide](https://help.openai.com/en/articles/8264644-setting-up-and-managing-prepaid-api-billing).
-ChatGPT subscription billing is separate from API usage.
+ChatGPT subscription billing is distinct from API usage. Eligible Pro and
+Business plans may claim API credits under the current
+[credit terms](https://developers.openai.com/api/docs/guides/chatgpt-api-credits);
+do not assume Plus includes credits or that any subscription supplies unlimited API usage.
 
 Activation checklist (the owner completes private account steps):
 

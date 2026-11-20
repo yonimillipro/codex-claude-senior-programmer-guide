@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 
-export const publicFiles = ['index.html', 'styles.css', 'app.js', 'mastery.css', 'mastery.js', 'motion.css', 'motion.js', 'collaboration-scene.js', 'chat.css', 'chat.js', 'guide-help-data.js', 'favicon.svg', 'manifest.webmanifest', 'pwa.js', 'pwa.css', 'offline.html'];
+export const publicFiles = ['index.html', 'styles.css', 'app.js', 'mastery.css', 'mastery.js', 'motion.css', 'motion.js', 'collaboration-scene.js', 'chat.css', 'chat.js', 'guide-help-data.js', 'guide-update.js', 'practice.js', 'practice.css', 'favicon.svg', 'manifest.webmanifest', 'pwa.js', 'pwa.css', 'offline.html'];
 export const publicDirectories = ['vendor', 'presentation', 'pwa'];
 const precacheDirectories = ['vendor', 'presentation', 'pwa'];
 

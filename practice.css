@@ -1,0 +1,36 @@
+.practice-section { padding-block: clamp(3rem, 6vw, 6rem); scroll-margin-top: calc(var(--header-height, 72px) + 1rem); }
+.practice-jump { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-bottom: 2rem; }
+.practice-section a { color: var(--cyan); text-underline-offset: .25em; }
+.practice-section a:hover { color: var(--text); }
+html[data-theme="light"] .practice-section a { color: var(--blue); }
+html[data-theme="light"] .practice-section a:hover { color: var(--text); }
+.practice-section a:focus-visible, .practice-section summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.practice-jump a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; }
+.practice-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--line); }
+.practice-grid article { padding: 1.5rem; min-width: 0; }
+.practice-grid article + article { border-inline-start: 1px solid var(--line); }
+.practice-grid h3 { margin: .5rem 0 .75rem; font-size: 1.35rem; line-height: 1.25; }
+.practice-grid p, .practice-section > p { color: var(--muted); }
+.practice-grid a { display: inline-block; padding-block: .5rem; font-size: .875rem; }
+.practice-callout { margin: 1.5rem 0 0; padding: 1rem 1.25rem; border-inline-start: 3px solid var(--cyan); background: var(--surface); font-size: .875rem; }
+.practice-disclosures { margin-top: 1.5rem; border-top: 1px solid var(--line); }
+.practice-section details { border-bottom: 1px solid var(--line); }
+.practice-section summary { padding: 1.25rem .25rem; cursor: pointer; color: var(--text); font-weight: 600; line-height: 1.5; }
+.practice-section summary:hover { color: var(--cyan); }
+.practice-section details > div { padding: 0 .25rem 1.25rem; max-width: 90ch; }
+.practice-section details p { color: var(--muted); }
+.practice-section code { overflow-wrap: anywhere; }
+.practice-subhead { margin: 3rem 0 .75rem; font-size: 1.75rem; }
+.handoff-body pre { max-height: 24rem; overflow: auto; padding: 1rem; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--bg); white-space: pre-wrap; overflow-wrap: anywhere; font: .8125rem/1.7 var(--font-mono); }
+.handoff-body .copy-status { display: block; min-height: 1.5rem; margin-top: .5rem; color: var(--muted); font-size: .875rem; }
+.practice-glossary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; margin: 0; }
+.practice-glossary > div { padding-block: 1.5rem; border-top: 1px solid var(--line); min-width: 0; }
+.practice-glossary dt { margin-bottom: .75rem; color: var(--text); font-weight: 700; font-size: 1.15rem; }
+.practice-glossary dd { margin: 0; color: var(--muted); }
+.practice-sources { padding-inline-start: 1.25rem; color: var(--muted); }
+.practice-sources li + li { margin-top: 1rem; }
+.practice-section .button { color: var(--bg); cursor: pointer; }
+.practice-section .button:hover { background: var(--blue); border-color: var(--blue); }
+.practice-section .button:disabled { opacity: .6; cursor: not-allowed; }
+@media (max-width: 760px) { .practice-grid, .practice-glossary { grid-template-columns: 1fr; } .practice-grid article { padding: 1.25rem 0; } .practice-grid article + article { border-inline-start: 0; border-top: 1px solid var(--line); } }
+
