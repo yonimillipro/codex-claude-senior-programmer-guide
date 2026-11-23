@@ -330,7 +330,7 @@ html[data-theme-mode="dark"] .moon-icon {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(520px, 0.9fr) minmax(620px, 1.3fr);
+  grid-template-columns: minmax(min(520px, 42%), 0.9fr) minmax(min(620px, 51%), 1.3fr);
   gap: clamp(46px, 5vw, 74px);
   padding-top: clamp(64px, 6vw, 92px);
   padding-bottom: clamp(58px, 6vw, 88px);
