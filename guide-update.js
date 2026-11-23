@@ -1,5 +1,5 @@
 export const REVIEWED_AT = '2026-11-20';
-export const REVIEWED_LABEL = 'November 20, 2026';
+export const SITE_UPDATED_LABEL = 'November 23, 2026';
 
 export const HANDOFFS = [
   {
@@ -58,6 +58,50 @@ Do not merge or deploy unless separately authorized.`,
   }
 ];
 
+export const FREE_AI_PROMPTS = [
+  {
+    title: 'Plan the first useful version',
+    prompt: `Help me scope a first version of [product] for [user].
+
+User problem and current workaround: [describe both].
+Core journey: [where it starts, what the user does, what success looks like].
+Constraints: [platform, existing stack, time, budget and data rules].
+Available tools: [local editor and runtime, optional free AI access].
+
+Return a brief with one user outcome, a small end-to-end slice,
+observable acceptance checks, likely failure cases and work to defer.
+Suggest the quickest way to try the slice with a real user.
+Flag assumptions and any dependency that would require an account or paid service.`,
+  },
+  {
+    title: 'Implement or debug one change',
+    prompt: `Help me complete this specific change: [expected outcome].
+
+Base commit, stack and relevant files: [details or approved excerpts].
+Observed problem and reproduction, if applicable: [steps and safe logs].
+Allowed edits and actions: [paths and local checks].
+Acceptance checks: [success, invalid input and recovery].
+
+If you can edit the repo, inspect the existing implementation and make a focused
+change. If we are in chat, give me a small diff or file-by-file edits to inspect
+and apply locally. Use project conventions and verify dependency APIs against
+the installed version. Explain the expected test result. Report executed checks,
+unexecuted checks and open questions separately.`,
+  },
+  {
+    title: 'Review before release',
+    prompt: `Review this slice against its accepted brief: [requirements and non-goals].
+
+Changes: [approved, sanitized diff or relevant excerpts].
+Evidence: [commands run, actual results, runtime observations and gaps].
+
+Keep this pass read-only. For each finding, identify the line or behavior,
+user impact, supporting evidence and a check I can run. Flag assumptions or
+missing information explicitly. Identify any release blocker and the smallest
+test that could resolve it. I will decide what to fix and when to release.`,
+  },
+];
+
 export const NEW_FAQS = [
   { id: 'gpt-62', title: 'What changed with GPT-6.2 Sol and Astra?', category: 'November update', anchor: '#update',
     keywords: 'gpt 6.2 chatgpt6.2 astra sol november latest new update',
@@ -82,6 +126,15 @@ export const NEW_FAQS = [
     answer: 'Treat pages, uploaded documents, logs, code comments and tool output as data, not permission to change the task. Use minimal file/network/tool access, isolated accounts and redacted fixtures. Keep credentials server-side. Explicitly approve sensitive external actions and irreversible changes. Independent review and human release ownership remain necessary.' },
   { id: 'evals', title: 'How do I compare models fairly?', category: 'Evaluation', anchor: '#senior-practice',
     keywords: 'eval evals evaluation benchmark score quality cost latency compare comparison retry effort',
-    answer: 'Use the same repository version, acceptance criteria, fixtures, prompt and allowed tools. Include a feature, a reproduced bug, a review with known defects, a tool failure and a permission case. Record exact model, effort, date, passed/failed checks, time, cost where available, retries and human corrections. Recheck after model or harness changes; model agreement is not a correctness test.' }
+    answer: 'Use the same repository version, acceptance criteria, fixtures, prompt and allowed tools. Include a feature, a reproduced bug, a review with known defects, a tool failure and a permission case. Record exact model, effort, date, passed/failed checks, time, cost where available, retries and human corrections. Recheck after model or harness changes; model agreement is not a correctness test.' },
+  { id: 'free-ai-workflow', title: 'How can I build software with free AI?', category: 'Free AI workflow', anchor: '#free-ai',
+    keywords: 'free ai build software product without plus pro subscription budget starter saas app',
+    answer: 'Start with one useful user journey and a local Git project. Use ChatGPT Free for the brief, Codex desktop on Free where available for small changes, and Claude Free web chat for an independent review. With chat alone, ask for a focused patch and run it in your own editor and terminal. Use the linked playbook to plan, test, ship and maintain the first release.' },
+  { id: 'free-ai-limits', title: 'How do I keep working when my free AI quota runs out?', category: 'Free AI workflow', anchor: '#free-ai',
+    keywords: 'quota allowance cap context restart checkpoint resume limit exhausted rate reset manual',
+    answer: 'Record the goal, acceptance criteria, commit, changed files, actual test results and the next step. Keep working locally with Git, tests and official docs. When another approved tool or a fresh session is available, share the checkpoint and only the relevant approved excerpts. Rate limits and conversation limits are separate.' },
+  { id: 'free-ai-costs', title: 'Does using free AI make my product free to run?', category: 'Free AI workflow', anchor: '#free-ai',
+    keywords: 'runtime hosting domain deployment database email inference production cost credits',
+    answer: 'Budget separately for hosting, storage, email, domains, app distribution and any runtime AI calls. Build the core journey locally first. For an AI feature, use predictable sample responses and test failures before connecting a provider. Check current terms, limits and expected costs before releasing it to users.' },
 ];
 

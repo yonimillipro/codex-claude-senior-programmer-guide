@@ -104,7 +104,7 @@ variant, not a change to all buttons or cards.
   URL and no referrer. Nothing is pasted or submitted automatically. External plan
   access/limits are the visitor's; the helper never promises unlimited free AI.
 - Output uses text nodes and native details/summary, never interpreted user HTML.
-  This bounded 24-answer collection intentionally renders all default results.
+  This bounded 27-answer collection intentionally renders all default results.
   Clipboard feedback is local, polite and guarded against stale completions.
 - Native buttons define hover, active, visible focus and disabled states. Touch
   actions are at least 44px where practical. Reduced motion removes panel animation.

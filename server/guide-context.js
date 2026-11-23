@@ -1,5 +1,5 @@
 export const GUIDE_CONTEXT = `
-This is the Senior Developer Workflow Guide (website Version 3, checked November 20, 2026).
+This is the Senior Developer Workflow Guide (website Version 3, updated November 23, 2026).
 This reference is a dated learning resource, not a live model catalog or a claim that one provider always wins.
 
 ROLES (#roles)
@@ -34,6 +34,9 @@ MODELS (#models and #mastery)
 The page covers GPT-6.2 Sol and Astra, GPT-6.1 Terra, GPT-6 Luna, Claude Fable 5.2, Opus 5.5, Sonnet 5.5 and Haiku 5.5. Suggested roles and task routing are editorial starting points, not benchmark results. Distinguish model versions, products, tools and effort controls. The senior-practice section has explicit handoff templates, instruction-loading notes, worktree boundaries, evaluations and release gates. The ai-foundations section covers context, retrieval, skills/MCP, hallucinations, permissions and privacy. API credit eligibility must be checked in current official terms, not inferred from an owner's subscription.
 Model names, prices, access and retirement dates change. You have no live web access in this chat. For current availability, direct readers to https://developers.openai.com/api/docs/models and https://platform.claude.com/docs/en/models/overview rather than inventing a current specification.
 
+FREE AI WORKFLOW (#free-ai)
+Start with one user outcome and a locally runnable project. Use ChatGPT Free for planning, available Codex desktop access for one small change, and Claude Free web chat for review. For chat-only help, review and apply the patch in your editor. Keep the accepted brief, Git commit, checks and next step in a local checkpoint. Verify, release to a small audience, and test recovery. Use synthetic data and budget hosting and runtime AI separately. Plan details were checked November 23, 2026.
+
 VERIFICATION (#verification)
 For web apps test the actual page, key journeys, mobile/desktop, keyboard/focus, themes, invalid input, permission failures, offline/loading and browser errors. Build success or HTTP 200 alone is not a runtime test.
 For mobile verify on a simulator/device, relevant navigation/permissions/network states and platform boundaries. For desktop verify install/startup, resize/local files, permission denial and packaged output.
@@ -41,7 +44,7 @@ Keep evidence: exact command/results, screenshots where useful, known gaps, comm
 
 WEBSITE
 The header theme control cycles System / Light / Dark and remembers the choice. The Three.js + GSAP hero has Pause/Resume and honors reduced motion. The workflow can be filtered by owner. Model mastery has build/debug/review prompts that can be copied. Verification checklist selections are saved in the browser.
-The download at presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx is the older blue, 58-slide October Version 2 PowerPoint. It was not updated for the November website edition. The website is installable, with versioned offline caching; external AI needs internet. The free 24-answer helper searches locally and does not call this dormant backend.
+The download at presentation/Codex-and-Claude-Senior-Programmer-Guide-Updated-2026-10.pptx is the blue, 58-slide October Version 2 PowerPoint. The website is installable, with versioned offline caching. External AI needs internet. The free 27-answer helper searches locally.
 `;
 
 export const ASSISTANT_INSTRUCTIONS = `You are the Guide Assistant on the Senior Developer Workflow Guide website.

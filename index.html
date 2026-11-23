@@ -92,6 +92,7 @@
       </button>
       <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
         <a href="#roles">Roles</a>
+        <a href="#free-ai">Free AI</a>
         <a href="#models">Models</a>
         <a href="#mastery">Model mastery</a>
         <a href="#workflow">Workflow</a>
@@ -113,7 +114,7 @@
     <main>
       <section class="hero section-shell" id="roles">
         <div class="hero-copy reveal">
-          <p class="release-badge">Version 3 · Checked November 20, 2026</p>
+          <p class="release-badge">Version 3 · Updated November 23, 2026</p>
           <h1>Senior Developer<br />Workflow Guide</h1>
           <p>Choose the right current model. Build in small slices.<br />Verify with evidence. Review independently.</p>
           <a class="button" href="#models">
@@ -122,6 +123,7 @@
           </a>
           <a class="pwa-jump" href="#install">Install app</a>
           <a class="pwa-jump" href="#update">What’s new</a>
+          <a class="pwa-jump" href="#free-ai">Build with free AI</a>
         </div>
         <div class="operating-model operating-model--motion reveal" role="group" aria-label="Combined operating model">
           <div class="collaboration-stage" id="collaboration-stage" data-motion="fallback">
@@ -237,7 +239,7 @@
           <p class="freshness-note">This is a checked snapshot, not a live model feed. Read the linked official docs before relying on availability, pricing, or limits. Offline readers see their saved edition.</p>
         </div>
         <nav class="practice-jump" aria-label="November update topics">
-          <a href="#models">Model routing</a><a href="#mastery">Model playbooks</a><a href="#senior-practice">Your two-tool workflow</a><a href="#ai-foundations">AI foundations &amp; safety</a><a href="#source-register">Source register</a>
+          <a href="#free-ai">Free AI workflow</a><a href="#models">Model routing</a><a href="#mastery">Model playbooks</a><a href="#senior-practice">Your two-tool workflow</a><a href="#ai-foundations">AI foundations &amp; safety</a><a href="#source-register">Source register</a>
         </nav>
         <div class="practice-grid">
           <article><span class="mastery-eyebrow">OPENAI</span><h3>GPT-6.2 is here</h3><p>Sol is the everyday starting point; Astra targets harder projects. Both launched in Work, Codex and the API on November 17. Terra remains a separate visual/computer-use option.</p><a href="https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol" target="_blank" rel="noreferrer">Official GPT-6.2 release ↗</a></article>
@@ -245,6 +247,80 @@
           <article><span class="mastery-eyebrow">YOUR OPERATING MODEL</span><h3>One contract. One integration owner.</h3><p>Keep Claude Code for investigation and independent review, Codex for implementation and verification, and yourself for decisions and release. Either tool can perform the other role; keep review evidence independent.</p><a href="#senior-practice">Use the handoff templates →</a></article>
         </div>
         <p class="practice-callout">The website is now Version 3. The downloadable 58-slide PowerPoint remains the October Version 2 edition and is labelled accordingly. The free FAQ helper stays local; this update does not enable paid AI requests.</p>
+      </section>
+
+      <section class="practice-section section-shell section-rule" id="free-ai" aria-labelledby="free-ai-heading">
+        <div class="section-heading">
+          <div>
+            <h2 id="free-ai-heading">Build software with free AI</h2>
+            <p>Use free AI for planning, small changes and review. Run the product and its tests on your own machine. Start with one outcome a real user can try.</p>
+          </div>
+          <p class="freshness-note">Plan access checked November 23, 2026. Free features and quotas can change. Check your account and the official plan pages before choosing a tool.</p>
+        </div>
+        <div class="practice-grid">
+          <article>
+            <h3>ChatGPT Free</h3>
+            <p>Turn an idea into a brief, break down a feature or reason through a sanitized error. Paste only the relevant text when you hit an upload limit.</p>
+            <a href="https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq" target="_blank" rel="noreferrer">ChatGPT Free features and limits ↗</a>
+          </article>
+          <article>
+            <h3>Codex on ChatGPT Free</h3>
+            <p>Sign in with your free ChatGPT account and open a local repository in the desktop app if it’s available to you. OpenAI lists GPT-6 Luna at Standard speed for Free, subject to rollout. Give Codex one small change and the checks it should run. Codex Cloud requires an eligible paid plan.</p>
+            <a href="https://learn.chatgpt.com/docs/pricing" target="_blank" rel="noreferrer">Codex plan and model access ↗</a>
+          </article>
+          <article>
+            <h3>Claude Free</h3>
+            <p>Use Claude’s web chat to challenge your plan or review a small, approved diff. Share the original acceptance criteria and ask for findings tied to specific lines. Claude Code access starts on paid plans.</p>
+            <a href="https://claude.com/pricing" target="_blank" rel="noreferrer">Claude plan comparison ↗</a>
+          </article>
+        </div>
+        <p class="practice-callout">Start with a local editor, Git and the runtime your project needs. A free chat account can help you build your product. Serving AI to your product’s users requires its own deployment and cost plan.</p>
+
+        <h3 class="practice-subhead">From idea to a release someone can use</h3>
+        <div class="practice-disclosures">
+          <details open><summary>1. Define the first useful outcome</summary><div>
+            <p>Write the user, their problem, one core journey and a measurable success criterion. Sketch the screen or interface and include one failure case. List what you’ll defer. Ask ChatGPT or Claude to challenge assumptions, then show a rough prototype to a representative user before investing in more features.</p>
+          </div></details>
+          <details><summary>2. Set up a repeatable local build</summary><div>
+            <p>Use the simplest supported stack you know that fits the requirements. Record the runtime version, setup and test commands in the README. Check in a lockfile when your tooling supports one. Use synthetic data and placeholder environment variables. Run the starting app and relevant checks, then record the baseline and create a branch.</p>
+            <p>In an existing Git repo, run <code>git status</code> to inspect local work and <code>git rev-parse --short HEAD</code> to record the baseline. When you’re ready, create a task branch with <code>git switch -c feature/first-slice</code>.</p>
+          </div></details>
+          <details><summary>3. Implement one end-to-end slice</summary><div>
+            <p>Give the assistant the accepted behavior, current commit, relevant files and allowed changes. Use Codex for a focused patch when available. In a chat-only session, ask for a small diff or a few specific edits, inspect them, and apply them in your editor. Commit the slice after you can explain the change and demonstrate the behavior.</p>
+            <p>Review changes with <code>git diff</code> and review staged changes with <code>git diff --staged</code>. Check the exact edits and the test output before you commit.</p>
+          </div></details>
+          <details><summary>4. Verify real behavior and debug one failure at a time</summary><div>
+            <p>Run the project’s checks and exercise its normal entry point. Test success, invalid input and recovery. For multi-user products, confirm users can see and change only their own permitted data. For a bug, capture the expected and observed behavior, smallest reproduction and exact error. Check one hypothesis at a time and add a regression test where it can catch a repeat.</p>
+          </div></details>
+          <details><summary>5. Review, release and recover</summary><div>
+            <p>Give Claude Free or a teammate the original brief, sanitized diff and actual test results. If you have one assistant, start a fresh review chat with the same evidence and verify its findings yourself. Decide what to fix, rerun affected checks, then release to a small audience. Record the release commit, smoke test, previous working release and recovery steps. For releases that change persistent data, test backup and restore first.</p>
+          </div></details>
+          <details><summary>6. Learn from usage and keep operating costs visible</summary><div>
+            <p>Ask whether users can complete the first journey and where they get stuck. Fix the biggest obstacle before adding features. Track errors and the owner of each service. Hosting, databases, email, domains, app distribution and runtime AI can each have separate limits or costs. Check plan terms and quotas before connecting a paid dependency. For an AI feature, start with sample responses and test empty, error and timeout states before wiring a provider.</p>
+          </div></details>
+          <details><summary>When your free allowance runs out</summary><div>
+            <p>Save a short checkpoint in your repo or task tracker with the goal, acceptance criteria, base commit, branch, changed files, commands and results, and the next smallest step. Keep testing and reading official docs locally. Resume with that checkpoint in a fresh chat or another approved tool when available. Resolve conflicting suggestions against the requirements, source code and tests.</p>
+            <p>Keep API keys, customer data, credentials and restricted code out of public AI chats. Share approved excerpts or a minimal example with synthetic data. If the material cannot be shared, continue locally or use an approved environment.</p>
+          </div></details>
+        </div>
+
+        <h3 class="practice-subhead">Pick the first slice for your product</h3>
+        <dl class="practice-glossary">
+          <div><dt>Web or SaaS</dt><dd>Start with one page and one useful action. For a task tracker, add a task, reject a blank title and verify the task survives a reload. Add sign-in and shared storage when the user journey calls for them.</dd></div>
+          <div><dt>Mobile or desktop</dt><dd>Start with one screen, local data and a restart check. Prove the core action on a supported target device before tackling distribution, syncing or permissions.</dd></div>
+          <div><dt>API, CLI or automation</dt><dd>Run one command or endpoint against a representative fixture. Verify the expected output, a rejected input and recovery after a failure. For a job that writes data, check what happens when it runs twice.</dd></div>
+          <div><dt>AI-powered product</dt><dd>Choose one measurable task such as extracting fields from a sample document. Start with fixtures and a predictable mock. Evaluate against expected outputs and decide how production data, availability and usage costs will be handled.</dd></div>
+        </dl>
+
+        <h3 class="practice-subhead">Prompts you can take to any assistant</h3>
+        <p>Replace the brackets, then paste one prompt into the tool you have. Keep the accepted brief and test results in your repository so you can resume anywhere.</p>
+        <div id="free-ai-templates"></div>
+        <noscript><p>Use the six steps above to write your prompt. Include the goal, relevant files, allowed changes and an observable acceptance check.</p></noscript>
+        <nav class="practice-jump" aria-label="Related engineering guidance">
+          <a href="#workflow">Full twelve-phase workflow</a>
+          <a href="#senior-practice">Codex and Claude handoffs</a>
+          <a href="#verification">Release verification</a>
+        </nav>
       </section>
 
       <section class="model-guide section-shell section-rule" id="models">
@@ -614,7 +690,7 @@
     </main>
 
     <footer class="site-footer section-shell">
-      <span>Senior Developer Workflow Guide · Version 3 · November 20, 2026</span>
+      <span>Senior Developer Workflow Guide · Version 3 · November 23, 2026</span>
       <span>Claude defines and reviews. Codex implements and verifies. You own the release.</span>
     </footer>
 

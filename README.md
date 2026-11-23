@@ -2,7 +2,14 @@
 
 An interactive learning resource and companion PowerPoint for senior developers using Codex, Claude Code, ChatGPT/OpenAI models, and Claude models in one evidence-driven engineering workflow.
 
-Website Version 3 — checked November 20, 2026. The downloadable PowerPoint remains the October Version 2 edition.
+Website Version 3, updated November 23, 2026. The core model catalog was checked
+November 20. The downloadable PowerPoint is the October Version 2 edition.
+
+[Build with free AI](https://codex-claude-senior-programmer-guid.vercel.app/#free-ai)
+shows how to plan, implement, verify, release and maintain a first product using
+ChatGPT Free, available Codex desktop access, Claude Free web chat and local
+development tools. It includes product examples, three reusable prompts and a
+checkpoint for continuing when an AI allowance runs out.
 
 ## Version 3: current models and practical engineering
 
@@ -71,13 +78,13 @@ There is no runtime CDN dependency, texture download, or build step.
 ## Free guide helper
 
 The fixed **Ask AI** pill now opens a clearly labelled **Guide helper**, not a
-live chatbot. It searches 24 prepared answers about roles, the workflow,
+live chatbot. It searches 27 prepared answers about roles, the workflow,
 prompting, debugging, review, verification, repository guidance, parallel work,
 model playbooks, the PowerPoint, themes, animation, costs and privacy. Native
 disclosures expand each answer and link to its guide section or deck download.
 
 Search is immediate, local, case-insensitive and IME-safe, with common keyword
-aliases, a clear button and an honest no-results state. All 24 answers are
+aliases, a clear button and an honest no-results state. All 27 answers are
 browsable without a query. The question and current results stay in page memory,
 not local storage, URLs, analytics or a database. The helper makes **no calls to
 `/api/chat` or an AI provider**, including connection/readiness checks. It needs
