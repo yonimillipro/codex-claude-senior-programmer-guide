@@ -102,7 +102,25 @@ test that could resolve it. I will decide what to fix and when to release.`,
   },
 ];
 
+export const GEMINI_PROMPTS = [
+  {
+    title: 'Design or critique one flow',
+    prompt: `Design or critique [website or mobile flow] for [audience].
+Primary action and success criteria: [goal and checks].
+Constraints and existing design tokens: [details].
+Screenshots: [label viewport and state; use sample data].
+
+Return a recommended direction, the user flow, responsive behavior,
+reusable components, and loading, empty, error and success states.
+Prioritize critiques by user impact and cite visible evidence.
+Include acceptance checks Codex can verify and flag assumptions.`,
+  },
+];
+
 export const NEW_FAQS = [
+  { id: 'gemini-neon', title: 'Where does Gemini 4 Neon fit in the Codex workflow?', category: 'Gemini UI/UX', anchor: '#gemini-workflow',
+    keywords: 'gemini 4 neon argon ux ui design visual screenshot prototype pilot',
+    answer: 'Use Argon for design and visual critique. Try Neon with the same brief, screenshots and thinking level. Compare accepted changes, missed requirements, time and cost. Codex implements and verifies with your selected OpenAI model. Claude Code can review substantial changes independently. Neon API use requires paid access.' },
   { id: 'gpt-62', title: 'What changed with GPT-6.2 Sol and Astra?', category: 'November update', anchor: '#update',
     keywords: 'gpt 6.2 chatgpt6.2 astra sol november latest new update',
     answer: 'The November 20, 2026 website edition covers GPT-6.2 Sol for everyday coding and Astra for harder projects, plus GPT-6.1 Terra for visual/computer tasks. GPT-6.2 launched in Work, Codex and the API on November 17. Select the exact model in a supported surface, record effort and tools, and evaluate it on your repository. Availability in ordinary Chat is a different question.' },

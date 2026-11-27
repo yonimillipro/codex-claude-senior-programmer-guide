@@ -2,7 +2,7 @@
 
 An interactive learning resource and companion PowerPoint for senior developers using Codex, Claude Code, ChatGPT/OpenAI models, and Claude models in one evidence-driven engineering workflow.
 
-Website Version 3, updated November 23, 2026. The core model catalog was checked
+Website Version 4, updated November 27, 2026. The core model catalog was checked
 November 20. The downloadable PowerPoint is the October Version 2 edition.
 
 [Build with free AI](https://codex-claude-senior-programmer-guid.vercel.app/#free-ai)
@@ -11,7 +11,9 @@ ChatGPT Free, available Codex desktop access, Claude Free web chat and local
 development tools. It includes product examples, three reusable prompts and a
 checkpoint for continuing when an AI allowance runs out.
 
-## Version 3: current models and practical engineering
+[Gemini design workflow](https://codex-claude-senior-programmer-guid.vercel.app/#gemini-workflow) includes a copyable design brief and the [Version 4 PDF](presentation/Codex-and-Claude-Code-Senior-Programmer-Guide-Version-4.pdf).
+
+## Current models and practical engineering
 
 The model explorer covers GPT-6.2 Sol and Astra, GPT-6.1 Terra, Luna, Claude
 Fable 5.2, Opus 5.5, Sonnet 5.5 and Haiku 5.5. Restricted Mythos access is

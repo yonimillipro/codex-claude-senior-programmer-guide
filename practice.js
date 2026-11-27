@@ -1,4 +1,4 @@
-import { FREE_AI_PROMPTS, HANDOFFS } from './guide-update.js';
+import { FREE_AI_PROMPTS, GEMINI_PROMPTS, HANDOFFS } from './guide-update.js';
 
 function renderTemplates(container, templates, buttonLabel) {
   if (!container) return;
@@ -53,3 +53,4 @@ function renderTemplates(container, templates, buttonLabel) {
 
 renderTemplates(document.querySelector('#handoff-templates'), HANDOFFS, 'Copy handoff');
 renderTemplates(document.querySelector('#free-ai-templates'), FREE_AI_PROMPTS, 'Copy prompt');
+renderTemplates(document.querySelector('#gemini-templates'), GEMINI_PROMPTS, 'Copy prompt');

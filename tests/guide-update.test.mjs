@@ -15,7 +15,8 @@ test('current handoffs retain a read-only reviewer and explicit release authorit
 });
 
 test('new guide topics are searchable and keep provenance and access distinctions', () => {
-  assert.equal(NEW_FAQS.length, 11);
+  assert.equal(NEW_FAQS.length, 12);
+  assert.ok(searchGuide('Gemini 4 Neon').some(item => item.id === 'gemini-neon' && item.anchor === '#gemini-workflow'));
   assert.ok(searchGuide('GPT 6.2').some(item => item.id === 'gpt-62'));
   assert.ok(searchGuide('RAG retrieval').some(item => item.id === 'retrieval'));
   assert.ok(searchGuide('prompt injection').some(item => item.id === 'agent-security'));

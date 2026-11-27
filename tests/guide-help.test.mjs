@@ -4,7 +4,7 @@ import { readFile, access } from 'node:fs/promises';
 import { FAQS, searchGuide, buildChatGPTPrompt, GUIDE_URL } from '../guide-help-data.js';
 
 test('all prepared answers are browsable; each has a unique ID and valid guide destination', async () => {
-  assert.equal(FAQS.length, 27); assert.equal(new Set(FAQS.map(faq => faq.id)).size, FAQS.length);
+  assert.equal(FAQS.length, 28); assert.equal(new Set(FAQS.map(faq => faq.id)).size, FAQS.length);
   assert.deepEqual(searchGuide('  '), FAQS);
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   for (const faq of FAQS) {

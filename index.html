@@ -114,7 +114,7 @@
     <main>
       <section class="hero section-shell" id="roles">
         <div class="hero-copy reveal">
-          <p class="release-badge">Version 3 · Updated November 23, 2026</p>
+          <p class="release-badge">Version 4 · Updated November 27, 2026</p>
           <h1>Senior Developer<br />Workflow Guide</h1>
           <p>Choose the right current model. Build in small slices.<br />Verify with evidence. Review independently.</p>
           <a class="button" href="#models">
@@ -123,7 +123,7 @@
           </a>
           <a class="pwa-jump" href="#install">Install app</a>
           <a class="pwa-jump" href="#update">What’s new</a>
-          <a class="pwa-jump" href="#free-ai">Build with free AI</a>
+          <a class="pwa-jump" href="#gemini-workflow">Gemini design workflow</a>
         </div>
         <div class="operating-model operating-model--motion reveal" role="group" aria-label="Combined operating model">
           <div class="collaboration-stage" id="collaboration-stage" data-motion="fallback">
@@ -235,18 +235,18 @@
 
       <section class="practice-section section-shell section-rule" id="update" aria-labelledby="update-heading">
         <div class="section-heading">
-          <div><span class="mastery-eyebrow">NOVEMBER 20, 2026 · EDITORIAL UPDATE</span><h2 id="update-heading">New models.<br />Same engineering discipline.</h2><p>Use stronger models to close real tasks—not to remove your evidence, security, or release gates.</p></div>
+          <div><span class="mastery-eyebrow">NOVEMBER 27, 2026 · EDITORIAL UPDATE</span><h2 id="update-heading">New models.<br />Same engineering discipline.</h2><p>Use stronger models to close real tasks—not to remove your evidence, security, or release gates.</p></div>
           <p class="freshness-note">This is a checked snapshot, not a live model feed. Read the linked official docs before relying on availability, pricing, or limits. Offline readers see their saved edition.</p>
         </div>
         <nav class="practice-jump" aria-label="November update topics">
-          <a href="#free-ai">Free AI workflow</a><a href="#models">Model routing</a><a href="#mastery">Model playbooks</a><a href="#senior-practice">Your two-tool workflow</a><a href="#ai-foundations">AI foundations &amp; safety</a><a href="#source-register">Source register</a>
+          <a href="#free-ai">Free AI workflow</a><a href="#models">Model routing</a><a href="#mastery">Model playbooks</a><a href="#gemini-workflow">Gemini design workflow</a><a href="#senior-practice">Engineering handoffs</a><a href="#ai-foundations">AI foundations &amp; safety</a><a href="#source-register">Source register</a>
         </nav>
         <div class="practice-grid">
           <article><span class="mastery-eyebrow">OPENAI</span><h3>GPT-6.2 is here</h3><p>Sol is the everyday starting point; Astra targets harder projects. Both launched in Work, Codex and the API on November 17. Terra remains a separate visual/computer-use option.</p><a href="https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol" target="_blank" rel="noreferrer">Official GPT-6.2 release ↗</a></article>
           <article><span class="mastery-eyebrow">ANTHROPIC</span><h3>Update the exact Claude version</h3><p>Fable 5.2 is the new demanding-reasoning option. Opus 5.5 is Anthropic’s general starting recommendation; Sonnet and Haiku 5.5 cover faster work. An alias is not a pinned version.</p><a href="https://platform.claude.com/docs/en/models/overview" target="_blank" rel="noreferrer">Official Claude catalog ↗</a></article>
           <article><span class="mastery-eyebrow">YOUR OPERATING MODEL</span><h3>One contract. One integration owner.</h3><p>Keep Claude Code for investigation and independent review, Codex for implementation and verification, and yourself for decisions and release. Either tool can perform the other role; keep review evidence independent.</p><a href="#senior-practice">Use the handoff templates →</a></article>
         </div>
-        <p class="practice-callout">The website is now Version 3. The downloadable 58-slide PowerPoint remains the October Version 2 edition and is labelled accordingly. The free FAQ helper stays local; this update does not enable paid AI requests.</p>
+        <p class="practice-callout">The <a href="presentation/Codex-and-Claude-Code-Senior-Programmer-Guide-Version-4.pdf" download>Version 4 PDF</a> includes the Neon evaluation and pilot. The 58-slide PowerPoint is the October Version 2 edition.</p>
       </section>
 
       <section class="practice-section section-shell section-rule" id="free-ai" aria-labelledby="free-ai-heading">
@@ -320,6 +320,34 @@
           <a href="#workflow">Full twelve-phase workflow</a>
           <a href="#senior-practice">Codex and Claude handoffs</a>
           <a href="#verification">Release verification</a>
+        </nav>
+      </section>
+
+      <section class="practice-section section-shell section-rule" id="gemini-workflow" aria-labelledby="gemini-workflow-heading">
+        <div class="section-heading">
+          <div>
+            <h2 id="gemini-workflow-heading">Design with Gemini. Build with Codex.</h2>
+            <p>Use Gemini 4 Argon for UI/UX design and screenshot critique. Try Gemini 4 Neon on a representative prototype, then use Codex to implement and verify the design you choose.</p>
+          </div>
+          <p class="freshness-note">Neon evidence checked November 27, 2026. Google’s five builder demos show its prototyping potential. Test the finished experience on your own projects.</p>
+        </div>
+        <dl class="practice-glossary">
+          <div><dt>1. Scope with Codex</dt><dd>Pick one user outcome. Record current behavior, affected contracts, constraints and observable acceptance checks.</dd></div>
+          <div><dt>2. Design with Gemini</dt><dd>Share the brief and labeled screenshots. Ask for the primary flow, reusable components, responsive behavior and loading, empty, error and success states. Use synthetic data for clinic examples.</dd></div>
+          <div><dt>3. Build and verify with Codex</dt><dd>Use your selected OpenAI model. Consider GPT-6.2 Sol for everyday changes and GPT-6.2 Astra for complex work where available. Keep edits focused and verify the real flow on a browser or device.</dd></div>
+          <div><dt>4. Review with Claude Code</dt><dd>For substantial changes, share the diff, acceptance criteria and test results. Ask for independent findings supported by evidence. Codex confirms and fixes issues. You own the release decision.</dd></div>
+        </dl>
+        <h3 class="practice-subhead">When to try Neon</h3>
+        <p>Neon ranked fifth on the November 23 WebDev Arena snapshot at xhigh. Opus 5.5 scored slightly higher on Terminal-Bench 4.1 and FrontierCode 2.0 in Google’s comparison. The tests cover different tasks and tool setups.</p>
+        <p>Compare Argon and Neon at the same thinking level on a ServiceLink onboarding screen and a responsive site or mobile flow. Record accepted changes, missed requirements, time to a usable handoff and cost. Neon’s standard API pricing is $3 per million input tokens and $15 per million output tokens, including thinking.</p>
+        <div id="gemini-templates"></div>
+        <noscript><p>Give Gemini the audience, goal, constraints and labeled screenshots. Ask for the recommended flow, likely failure states and acceptance checks.</p></noscript>
+        <nav class="practice-jump" aria-label="Gemini sources and guide download">
+          <a href="presentation/Codex-and-Claude-Code-Senior-Programmer-Guide-Version-4.pdf" download>Download the Version 4 PDF</a>
+          <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-neon-builders/">Google’s builder showcase ↗</a>
+          <a href="https://arena.ai/leaderboard/code/webdev">WebDev Arena ↗</a>
+          <a href="https://storage.googleapis.com/deepmind-media/gemini/gemini_4_neon_model_evaluation.pdf">Google’s evaluation ↗</a>
+          <a href="https://aistudio.google.com/docs/pricing#gemini-4-neon">Gemini API pricing ↗</a>
         </nav>
       </section>
 
@@ -690,7 +718,7 @@
     </main>
 
     <footer class="site-footer section-shell">
-      <span>Senior Developer Workflow Guide · Version 3 · November 23, 2026</span>
+      <span>Senior Developer Workflow Guide · Version 4 · November 27, 2026</span>
       <span>Claude defines and reviews. Codex implements and verifies. You own the release.</span>
     </footer>
 
